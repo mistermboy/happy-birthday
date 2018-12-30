@@ -1,7 +1,6 @@
 var tipoSuelo = 1;
 var tipoJugador = 2;
 var tipoCaja = 3;
-var tipoMuro = 4;
 
 
 var controles = {};
@@ -18,6 +17,7 @@ var GameLayer = cc.Layer.extend({
     muros:[],
     cajas:[],
     formasEliminar:[],
+    chocandoMuro:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -44,10 +44,6 @@ var GameLayer = cc.Layer.extend({
 
         this.space.addCollisionHandler(tipoJugador, tipoCaja,
             null, this.collisionJugadorConCaja.bind(this), null, null);
-
-        this.space.addCollisionHandler(tipoJugador, tipoMuro,
-            null, this.collisionJugadorConMuro.bind(this), null, null);
-
 
 
         this.jugador = new Jugador(this, cc.p(50,250));
@@ -155,45 +151,18 @@ var GameLayer = cc.Layer.extend({
 
 
         if (controles.moverX > 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x + 100;
+            shapes[1].body.p.x=this.jugador.body.p.x + 120;
         }
         if (controles.moverX < 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x - 100;
+            shapes[1].body.p.x=this.jugador.body.p.x - 120;
         }
 
         if (controles.moverY > 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y + 100;
+            shapes[1].body.p.y=this.jugador.body.p.y + 120;
         }
         if (controles.moverY < 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y - 100;
+            shapes[1].body.p.y=this.jugador.body.p.y - 120;
         }
-
-
-
-    },
-
-    collisionJugadorConMuro:function (arbiter, space) {
-
-
-        var shapes = arbiter.getShapes();
-
-
-
-        if (controles.moverX > 0) {
-            this.jugador.body.p.x = shapes[1].body.p.x -80;
-        }
-        if (controles.moverX < 0) {
-            this.jugador.body.p.x = shapes[1].body.p.x +80;
-        }
-
-        if (controles.moverY > 0) {
-            this.jugador.body.p.y = shapes[1].body.p.y -80;
-        }
-        if (controles.moverY < 0) {
-            this.jugador.body.p.y = shapes[1].body.p.y +80;
-        }
-
-
 
 
 
