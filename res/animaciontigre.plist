@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>cocodrilo1.png</key>
+            <key>tigre1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,0},{40,40}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo2.png</key>
+            <key>tigre2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{40,0},{40,40}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo3.png</key>
+            <key>tigre3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{80,0},{40,40}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo4.png</key>
+            <key>tigre4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{120,0},{40,40}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo5.png</key>
+            <key>tigre5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{160,0},{40,40}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo6.png</key>
+            <key>tigre6.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,0},{40,40}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo7.png</key>
+            <key>tigre7.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{240,0},{40,40}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{40,40}</string>
             </dict>
-            <key>cocodrilo8.png</key>
+            <key>tigre8.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{280,0},{40,40}}</string>
@@ -114,13 +114,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>animacioncocodrilo.png</string>
+            <string>animaciontigre.png</string>
             <key>size</key>
             <string>{320,40}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:0e07504f614e935fcfc28006d277442e$</string>
             <key>textureFileName</key>
-            <string>animacioncocodrilo.png</string>
+            <string>animaciontigre.png</string>
         </dict>
     </dict>
 </plist>

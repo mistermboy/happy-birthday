@@ -2,7 +2,7 @@
   "init_cfg": {
     "isLandscape": true,
     "isWindowTop": false,
-    "name": "Ejemplo2",
+    "name": "infinite",
     "width": 1136,
     "height": 640,
     "entry": "main.js",
