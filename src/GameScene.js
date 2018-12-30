@@ -18,7 +18,6 @@ var GameLayer = cc.Layer.extend({
     enemigos:[],
     pinchos:[],
     formasEliminar:[],
-    cont:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -64,9 +63,6 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
-
-        this.cont = 100;
-
         this.scheduleUpdate();
 
 
@@ -79,12 +75,6 @@ var GameLayer = cc.Layer.extend({
 
         this.procesarControles();
 
-
-        if(this.cont == 52){
-            this.cont = 100;
-            this.finAnimacion();
-        }
-        this.cont++;
 
         // Control de emisor de partículas
         if (this.tiempoEfecto > 0){
@@ -143,10 +133,9 @@ var GameLayer = cc.Layer.extend({
       },
     collisionJugadorConMoneda:function (arbiter, space) {
 
+        var shapes = arbiter.getShapes();
 
-        console.log("colision");
-        this.monedas[0].body.p.x+=5;
-        this.cont = 0;
+        shapes[1].body.p.x+=5;
 
     },
 
