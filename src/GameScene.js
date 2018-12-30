@@ -39,17 +39,21 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this.depuracion, 10);
 
 
+
+
+        this.space.addCollisionHandler(tipoJugador, tipoMoneda,
+            null, this.collisionJugadorConMoneda.bind(this), null, null);
+
         this.jugador = new Jugador(this, cc.p(50,250));
         this.cargarMapa();
 
 
-
-    // Declarar emisor de particulas (parado)
-    this._emitter =  new cc.ParticleGalaxy.create();
-    this._emitter.setEmissionRate(0);
-    //this._emitter.texture = cc.textureCache.addImage(res.fire_png);
-    this._emitter.shapeType = cc.ParticleSystem.STAR_SHAPE;
-    this.addChild(this._emitter,10);
+        // Declarar emisor de particulas (parado)
+        this._emitter =  new cc.ParticleGalaxy.create();
+        this._emitter.setEmissionRate(0);
+        //this._emitter.texture = cc.textureCache.addImage(res.fire_png);
+        this._emitter.shapeType = cc.ParticleSystem.STAR_SHAPE;
+        this.addChild(this._emitter,10);
 
 
         cc.eventManager.addListener({
@@ -57,6 +61,8 @@ var GameLayer = cc.Layer.extend({
             onKeyPressed: this.procesarKeyPressed.bind(this),
             onKeyReleased: this.procesarKeyReleased.bind(this)
         }, this);
+
+
 
         this.scheduleUpdate();
 
@@ -67,7 +73,6 @@ var GameLayer = cc.Layer.extend({
         this.jugador.actualizar();
 
         this.space.step(dt);
-
 
         this.procesarControles();
 
@@ -124,8 +129,17 @@ var GameLayer = cc.Layer.extend({
             this.monedas.push(moneda);
         }
 
+        console.log(this.monedas);
 
       },
+    collisionJugadorConMoneda:function (arbiter, space) {
+
+
+        console.log("colision");
+        this.monedas[0].body.vx = 100;
+
+
+    },
     procesarKeyPressed(keyCode) {
         console.log("procesarKeyPressed " + keyCode);
         var posicion = teclas.indexOf(keyCode);
