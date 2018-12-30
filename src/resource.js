@@ -21,10 +21,10 @@ var res = {
     animacion_cuervo_plist: "res/animacion_cuervo.plist",
     animaciontigre_plist : "res/animaciontigre.plist",
     animaciontigre_png: "res/animaciontigre.png",
-    box_red_png : "res/box-red.png",
-    box_red_plist : "res/box-red.plist",
-    box_brown_png : "res/box-brown.png",
-    box_brown_plist : "res/box-brown.plist"
+    box_red_png : "res/box_red.png",
+    box_red_plist : "res/box_red.plist",
+    box_brown_png : "res/box_brown.png",
+    box_brown_plist : "res/box_brown.plist"
 };
 
 var g_resources = [];

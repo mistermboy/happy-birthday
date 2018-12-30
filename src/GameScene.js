@@ -15,9 +15,8 @@ var GameLayer = cc.Layer.extend({
     jugador: null,
     mapa: null,
     mapaAncho: null,
-    monedas:[],
-    enemigos:[],
-    pinchos:[],
+    muros:[],
+    cajas:[],
     formasEliminar:[],
     ctor:function () {
         this._super();
@@ -45,6 +44,11 @@ var GameLayer = cc.Layer.extend({
 
         this.space.addCollisionHandler(tipoJugador, tipoCaja,
             null, this.collisionJugadorConCaja.bind(this), null, null);
+
+        this.space.addCollisionHandler(tipoJugador, tipoMuro,
+            null, this.collisionJugadorConMuro.bind(this), null, null);
+
+
 
         this.jugador = new Jugador(this, cc.p(50,250));
         this.cargarMapa();
@@ -122,15 +126,27 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
+
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
-            var moneda = new Caja(this,
+            var muro = new Muro(this,
                 cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
-            this.monedas.push(moneda);
+            this.muros.push(muro);
         }
 
-        console.log(this.monedas);
+
+
+
+        var grupoCajas = this.mapa.getObjectGroup("cajas");
+        var cajasArray = grupoCajas.getObjects();
+        for (var i = 0; i < cajasArray.length; i++) {
+            var caja = new Caja(this,
+                cc.p(cajasArray[i]["x"]+50,cajasArray[i]["y"]-50));
+            this.cajas.push(caja);
+        }
+
+
 
       },
     collisionJugadorConCaja:function (arbiter, space) {
@@ -151,6 +167,33 @@ var GameLayer = cc.Layer.extend({
         if (controles.moverY < 0) {
             shapes[1].body.p.y=this.jugador.body.p.y - 100;
         }
+
+
+
+    },
+
+    collisionJugadorConMuro:function (arbiter, space) {
+
+
+        var shapes = arbiter.getShapes();
+
+
+
+        if (controles.moverX > 0) {
+            this.jugador.body.p.x = shapes[1].body.p.x -80;
+        }
+        if (controles.moverX < 0) {
+            this.jugador.body.p.x = shapes[1].body.p.x +80;
+        }
+
+        if (controles.moverY > 0) {
+            this.jugador.body.p.y = shapes[1].body.p.y -80;
+        }
+        if (controles.moverY < 0) {
+            this.jugador.body.p.y = shapes[1].body.p.y +80;
+        }
+
+
 
 
 

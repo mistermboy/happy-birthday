@@ -6,7 +6,7 @@ var Caja = cc.Class.extend({
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        this.sprite = new cc.PhysicsSprite("#box-brown1.png");
+        this.sprite = new cc.PhysicsSprite("#box_brown1.png");
         // Cuerpo estática, no le afectan las fuerzas
         this.body = new cp.Body(5, cp.momentForBox(1,
             this.sprite.getContentSize().width,
