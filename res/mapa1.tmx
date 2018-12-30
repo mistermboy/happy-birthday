@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="7">
  <tileset firstgid="1" name="box-backgrounb" tilewidth="100" tileheight="100" tilecount="1" columns="1">
   <image source="box-backgrounb.png" width="100" height="100"/>
  </tileset>
@@ -16,4 +16,17 @@
    eJxjYGBgYGIgDSCrBwAA0AAF
   </data>
  </layer>
+ <objectgroup name="suelos">
+  <object id="2" x="3" y="0">
+   <polyline points="0,0 399,0 396,400 -2,399 -1,1"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="bloques">
+  <object id="5" x="102" y="3">
+   <polyline points="0,0 -1,97 99,97 99,-2 3,-1"/>
+  </object>
+  <object id="6" x="102" y="302">
+   <polyline points="0,0 97,-1 97,97 -1,98 -1,1"/>
+  </object>
+ </objectgroup>
 </map>
