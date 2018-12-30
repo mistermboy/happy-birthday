@@ -12,8 +12,8 @@ var GameLayer = cc.Layer.extend({
         this._super();
         var size = cc.winSize;
 
-        cc.spriteFrameCache.addSpriteFrames(res.animacioncocodrilo_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.animacioncocodrilo_plist);
+    //    cc.spriteFrameCache.addSpriteFrames(res.animacioncocodrilo_plist);
+     //   cc.spriteFrameCache.addSpriteFrames(res.animacionbola_plist);
 
 
         // Inicializar Space
@@ -31,7 +31,7 @@ var GameLayer = cc.Layer.extend({
 */
 
         this.jugador = new Jugador(this, cc.p(50, 150));
-        this.cargarMapa();
+ //       this.cargarMapa();
         this.scheduleUpdate();
 
 
@@ -95,7 +95,6 @@ var GameLayer = cc.Layer.extend({
             }
         }
 
-
         //Sustituir por bloques
 
         /*
@@ -126,8 +125,7 @@ var GameLayer = cc.Layer.extend({
         }
 
         */
-}
-
+    }
 });
 
 var GameScene = cc.Scene.extend({
