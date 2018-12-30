@@ -1,6 +1,7 @@
 var tipoSuelo = 1;
 var tipoJugador = 2;
-var tipoMoneda = 3;
+var tipoCaja = 3;
+var tipoMuro = 4;
 
 
 var controles = {};
@@ -29,6 +30,7 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.animacion_cuervo_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_brown_plist);
 
 
         // Inicializar Space
@@ -41,8 +43,8 @@ var GameLayer = cc.Layer.extend({
 
 
 
-        this.space.addCollisionHandler(tipoJugador, tipoMoneda,
-            null, this.collisionJugadorConMoneda.bind(this), null, null);
+        this.space.addCollisionHandler(tipoJugador, tipoCaja,
+            null, this.collisionJugadorConCaja.bind(this), null, null);
 
         this.jugador = new Jugador(this, cc.p(50,250));
         this.cargarMapa();
@@ -123,7 +125,7 @@ var GameLayer = cc.Layer.extend({
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
-            var moneda = new Muro(this,
+            var moneda = new Caja(this,
                 cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
             this.monedas.push(moneda);
         }
@@ -131,21 +133,29 @@ var GameLayer = cc.Layer.extend({
         console.log(this.monedas);
 
       },
-    collisionJugadorConMoneda:function (arbiter, space) {
+    collisionJugadorConCaja:function (arbiter, space) {
 
         var shapes = arbiter.getShapes();
 
-        shapes[1].body.p.x+=5;
+
+        if (controles.moverX > 0) {
+            shapes[1].body.p.x=this.jugador.body.p.x + 100;
+        }
+        if (controles.moverX < 0) {
+            shapes[1].body.p.x=this.jugador.body.p.x - 100;
+        }
+
+        if (controles.moverY > 0) {
+            shapes[1].body.p.y=this.jugador.body.p.y + 100;
+        }
+        if (controles.moverY < 0) {
+            shapes[1].body.p.y=this.jugador.body.p.y - 100;
+        }
+
+
 
     },
 
-    finAnimacion(){
-
-        this.monedas[0].body.vx = 0;
-
-
-    }
-    ,
     procesarKeyPressed(keyCode) {
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {

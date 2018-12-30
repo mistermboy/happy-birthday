@@ -1,4 +1,4 @@
-var Muro = cc.Class.extend({
+var Caja = cc.Class.extend({
     gameLayer:null,
     sprite:null,
     shape:null,
@@ -6,7 +6,7 @@ var Muro = cc.Class.extend({
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        this.sprite = new cc.PhysicsSprite("#box-red1.png");
+        this.sprite = new cc.PhysicsSprite("#box-brown1.png");
         // Cuerpo estática, no le afectan las fuerzas
         this.body = new cp.Body(5, cp.momentForBox(1,
             this.sprite.getContentSize().width,
@@ -17,9 +17,9 @@ var Muro = cc.Class.extend({
 
 
         this.shape = new cp.BoxShape(this.body,
-            this.sprite.getContentSize().width - 16,
-            this.sprite.getContentSize().height - 16);
-        this.shape.setCollisionType(tipoMoneda);
+            this.sprite.getContentSize().width,
+            this.sprite.getContentSize().height);
+        this.shape.setCollisionType(tipoCaja);
         // forma estática
         gameLayer.space.addBody(this.body);
 
