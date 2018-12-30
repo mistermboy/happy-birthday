@@ -1,6 +1,7 @@
 var tipoSuelo = 1;
 var tipoJugador = 2;
-var tipoMoneda = 3;
+var tipoCaja = 3;
+var tipoMuro = 4;
 
 
 var controles = {};
@@ -28,7 +29,8 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.jugador_impactado_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animacion_cuervo_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.moneda_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_brown_plist);
 
 
         // Inicializar Space
@@ -39,17 +41,21 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this.depuracion, 10);
 
 
+
+
+        this.space.addCollisionHandler(tipoJugador, tipoCaja,
+            null, this.collisionJugadorConCaja.bind(this), null, null);
+
         this.jugador = new Jugador(this, cc.p(50,250));
         this.cargarMapa();
 
 
-
-    // Declarar emisor de particulas (parado)
-    this._emitter =  new cc.ParticleGalaxy.create();
-    this._emitter.setEmissionRate(0);
-    //this._emitter.texture = cc.textureCache.addImage(res.fire_png);
-    this._emitter.shapeType = cc.ParticleSystem.STAR_SHAPE;
-    this.addChild(this._emitter,10);
+        // Declarar emisor de particulas (parado)
+        this._emitter =  new cc.ParticleGalaxy.create();
+        this._emitter.setEmissionRate(0);
+        //this._emitter.texture = cc.textureCache.addImage(res.fire_png);
+        this._emitter.shapeType = cc.ParticleSystem.STAR_SHAPE;
+        this.addChild(this._emitter,10);
 
 
         cc.eventManager.addListener({
@@ -57,6 +63,7 @@ var GameLayer = cc.Layer.extend({
             onKeyPressed: this.procesarKeyPressed.bind(this),
             onKeyReleased: this.procesarKeyReleased.bind(this)
         }, this);
+
 
         this.scheduleUpdate();
 
@@ -67,7 +74,6 @@ var GameLayer = cc.Layer.extend({
         this.jugador.actualizar();
 
         this.space.step(dt);
-
 
         this.procesarControles();
 
@@ -84,8 +90,8 @@ var GameLayer = cc.Layer.extend({
              this.tiempoEfecto = 0;
         }
 
-             var posicionXJugador = this.jugador.body.p.x - 200;
-             this.setPosition(cc.p( -posicionXJugador,null));
+
+
 
 
     },cargarMapa:function () {
@@ -116,18 +122,41 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
-        var grupoMuros = this.mapa.getObjectGroup("bloques");
+        var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
-            var moneda = new Muro(this,
-                cc.p(murosArray[i]["x"],murosArray[i]["y"]));
+            var moneda = new Caja(this,
+                cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
             this.monedas.push(moneda);
         }
 
+        console.log(this.monedas);
 
       },
+    collisionJugadorConCaja:function (arbiter, space) {
+
+        var shapes = arbiter.getShapes();
+
+
+        if (controles.moverX > 0) {
+            shapes[1].body.p.x=this.jugador.body.p.x + 100;
+        }
+        if (controles.moverX < 0) {
+            shapes[1].body.p.x=this.jugador.body.p.x - 100;
+        }
+
+        if (controles.moverY > 0) {
+            shapes[1].body.p.y=this.jugador.body.p.y + 100;
+        }
+        if (controles.moverY < 0) {
+            shapes[1].body.p.y=this.jugador.body.p.y - 100;
+        }
+
+
+
+    },
+
     procesarKeyPressed(keyCode) {
-        console.log("procesarKeyPressed " + keyCode);
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {
             teclas.push(keyCode);
@@ -154,7 +183,6 @@ var GameLayer = cc.Layer.extend({
     },
 
     procesarKeyReleased(keyCode) {
-        console.log("procesarKeyReleased " + keyCode);
         var posicion = teclas.indexOf(keyCode);
         teclas.splice(posicion, 1);
         switch (keyCode) {
@@ -185,20 +213,20 @@ var GameLayer = cc.Layer.extend({
 
     procesarControles() {
         if (controles.moverX > 0) {
-            this.jugador.body.vx = 200;
+            this.jugador.body.vx = 150;
         }
         if (controles.moverX < 0) {
-            this.jugador.body.vx = -200;
+            this.jugador.body.vx = -150;
         }
         if (controles.moverX == 0) {
             this.jugador.body.vx = 0;
         }
 
         if (controles.moverY > 0) {
-            this.jugador.body.vy = 200;
+            this.jugador.body.vy = 150;
         }
         if (controles.moverY < 0) {
-            this.jugador.body.vy = -200;
+            this.jugador.body.vy = -150;
         }
         if (controles.moverY == 0) {
             this.jugador.body.vy = 0;
