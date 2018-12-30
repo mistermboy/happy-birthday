@@ -6,7 +6,7 @@ var Muro = cc.Class.extend({
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        this.sprite = new cc.PhysicsSprite("#moneda1.png");
+        this.sprite = new cc.PhysicsSprite("#box-red1.png");
         // Cuerpo estática, no le afectan las fuerzas
         this.body = new cp.Body(5, cp.momentForBox(1,
             this.sprite.getContentSize().width,
@@ -14,10 +14,6 @@ var Muro = cc.Class.extend({
         this.body.setPos(posicion);
         this.body.setAngle(0);
         this.sprite.setBody(this.body);
-        // Los cuerpos estáticos nunca se añaden al Space
-        var radio = this.sprite.getContentSize().width / 2;
-        // forma
-
 
 
         this.shape = new cp.BoxShape(this.body,

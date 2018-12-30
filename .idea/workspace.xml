@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="760145c0-6bb8-41f5-a983-fa674d723a36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mapa1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/res/mapa1.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameScene.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Muro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Muro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,7 +30,7 @@
         <counts>
           <entry key="html" value="2" />
           <entry key="iml" value="1" />
-          <entry key="js" value="11" />
+          <entry key="js" value="12" />
           <entry key="json" value="3" />
           <entry key="plist" value="2" />
           <entry key="project" value="1" />
@@ -40,40 +42,40 @@
           <entry key="HTML" value="2" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="11" />
+          <entry key="JavaScript" value="12" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="597" />
+          <entry key="js" value="848" />
           <entry key="json" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="16" />
-          <entry key="JavaScript" value="597" />
+          <entry key="JavaScript" value="848" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="72" />
+            <state relative-caret-position="544">
+              <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Muro.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="59" />
+            <state relative-caret-position="221">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -110,8 +112,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Jugador.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="49" column="41" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="534">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -133,10 +144,10 @@
       <list>
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/project.json" />
-        <option value="$PROJECT_DIR$/src/resource.js" />
         <option value="$PROJECT_DIR$/src/Jugador.js" />
-        <option value="$PROJECT_DIR$/src/GameScene.js" />
+        <option value="$PROJECT_DIR$/src/resource.js" />
         <option value="$PROJECT_DIR$/src/Muro.js" />
+        <option value="$PROJECT_DIR$/src/GameScene.js" />
       </list>
     </option>
   </component>
@@ -212,17 +223,18 @@
       <option name="presentableId" value="Default" />
       <updated>1546181037889</updated>
       <workItem from="1546181039107" duration="3257000" />
-      <workItem from="1546186458286" duration="5022000" />
+      <workItem from="1546186458286" duration="8174000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8279000" />
+    <option name="totallyTimeSpent" value="11431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20916754" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -289,34 +301,34 @@
         <state relative-caret-position="-255" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.cocos-project.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jugador.js">
+    <entry file="file://$PROJECT_DIR$/src/resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="49" column="41" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="49" selection-end-column="41" />
+        <state relative-caret-position="408">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
+    <entry file="file://$PROJECT_DIR$/src/Jugador.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="72" />
+        <state relative-caret-position="534">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Muro.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="59" />
+        <state relative-caret-position="221">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
         </state>
       </provider>
     </entry>

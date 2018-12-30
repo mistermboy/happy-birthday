@@ -21,7 +21,8 @@ var res = {
     animacion_cuervo_plist: "res/animacion_cuervo.plist",
     animaciontigre_plist : "res/animaciontigre.plist",
     animaciontigre_png: "res/animaciontigre.png",
-    box_red_png : "res/box-red.png"
+    box_red_png : "res/box-red.png",
+    box_red_plist : "res/box-red.plist"
 };
 
 var g_resources = [];

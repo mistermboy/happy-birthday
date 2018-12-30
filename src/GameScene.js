@@ -18,6 +18,7 @@ var GameLayer = cc.Layer.extend({
     enemigos:[],
     pinchos:[],
     formasEliminar:[],
+    cont:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -28,7 +29,7 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.jugador_impactado_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animacion_cuervo_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.moneda_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
 
 
         // Inicializar Space
@@ -64,6 +65,8 @@ var GameLayer = cc.Layer.extend({
 
 
 
+        this.cont = 100;
+
         this.scheduleUpdate();
 
 
@@ -77,6 +80,12 @@ var GameLayer = cc.Layer.extend({
         this.procesarControles();
 
 
+        if(this.cont == 52){
+            this.cont = 100;
+            this.finAnimacion();
+        }
+        this.cont++;
+
         // Control de emisor de partículas
         if (this.tiempoEfecto > 0){
              this.tiempoEfecto = this.tiempoEfecto - dt;
@@ -89,8 +98,8 @@ var GameLayer = cc.Layer.extend({
              this.tiempoEfecto = 0;
         }
 
-             var posicionXJugador = this.jugador.body.p.x - 200;
-             this.setPosition(cc.p( -posicionXJugador,null));
+
+
 
 
     },cargarMapa:function () {
@@ -121,11 +130,11 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
-        var grupoMuros = this.mapa.getObjectGroup("bloques");
+        var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
             var moneda = new Muro(this,
-                cc.p(murosArray[i]["x"],murosArray[i]["y"]));
+                cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
             this.monedas.push(moneda);
         }
 
@@ -136,12 +145,19 @@ var GameLayer = cc.Layer.extend({
 
 
         console.log("colision");
-        this.monedas[0].body.vx = 100;
-
+        this.monedas[0].body.p.x+=5;
+        this.cont = 0;
 
     },
+
+    finAnimacion(){
+
+        this.monedas[0].body.vx = 0;
+
+
+    }
+    ,
     procesarKeyPressed(keyCode) {
-        console.log("procesarKeyPressed " + keyCode);
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {
             teclas.push(keyCode);
@@ -168,7 +184,6 @@ var GameLayer = cc.Layer.extend({
     },
 
     procesarKeyReleased(keyCode) {
-        console.log("procesarKeyReleased " + keyCode);
         var posicion = teclas.indexOf(keyCode);
         teclas.splice(posicion, 1);
         switch (keyCode) {
@@ -199,20 +214,20 @@ var GameLayer = cc.Layer.extend({
 
     procesarControles() {
         if (controles.moverX > 0) {
-            this.jugador.body.vx = 200;
+            this.jugador.body.vx = 150;
         }
         if (controles.moverX < 0) {
-            this.jugador.body.vx = -200;
+            this.jugador.body.vx = -150;
         }
         if (controles.moverX == 0) {
             this.jugador.body.vx = 0;
         }
 
         if (controles.moverY > 0) {
-            this.jugador.body.vy = 200;
+            this.jugador.body.vy = 150;
         }
         if (controles.moverY < 0) {
-            this.jugador.body.vy = -200;
+            this.jugador.body.vy = -150;
         }
         if (controles.moverY == 0) {
             this.jugador.body.vy = 0;
