@@ -34,7 +34,7 @@ var Jugador = cc.Class.extend({
             this.sprite.getContentSize().height));
 
 
-        */
+
 
 
         this.body.setPos(posicion);
@@ -63,7 +63,7 @@ var Jugador = cc.Class.extend({
         // añadir sprite a la capa
         gameLayer.addChild(this.sprite,10);
 
-
+       */
     },
     actualizar: function (){
         switch ( this.estado ){
@@ -77,5 +77,5 @@ var Jugador = cc.Class.extend({
         }
     }
 
-    
+
 });
