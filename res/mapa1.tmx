@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="9">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="10">
  <tileset firstgid="1" name="box-backgrounb" tilewidth="100" tileheight="100" tilecount="1" columns="1">
   <image source="box-backgrounb.png" width="100" height="100"/>
  </tileset>
@@ -32,6 +32,11 @@
  <objectgroup name="cajas">
   <object id="8" x="101" y="201">
    <polyline points="0,0 98,-1 98,97 1,97 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="final">
+  <object id="9" x="301" y="202">
+   <polyline points="0,0 99,-1 98,98 0,98 0,-2"/>
   </object>
  </objectgroup>
 </map>
