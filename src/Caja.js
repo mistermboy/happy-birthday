@@ -11,7 +11,7 @@ var Caja = cc.Class.extend({
         this.sprite = new cc.PhysicsSprite("#box_brown1.png");
         // Cuerpo estática, no le afectan las fuerzas
 
-        this.body = new cp.Body(1, cp.momentForBox(1, this.sprite.width, this.sprite.height));
+        this.body = new cp.Body(10, cp.momentForBox(1, this.sprite.width, this.sprite.height));
         this.body.setPos(posicion);
         this.sprite.setBody(this.body);
 

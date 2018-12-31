@@ -241,10 +241,10 @@ var GameLayer = cc.Layer.extend({
 
 
             if (controles.moverX > 0) {
-                this.jugador.body.vx = 300;
+                this.jugador.body.vx = 170;
             }
             if (controles.moverX < 0) {
-                this.jugador.body.vx = -300;
+                this.jugador.body.vx = -170;
             }
 
             if (controles.moverX == 0) {
@@ -252,11 +252,11 @@ var GameLayer = cc.Layer.extend({
             }
 
             if (controles.moverY > 0) {
-            this.jugador.body.vy = 300;
+            this.jugador.body.vy = 170;
 
             }
             if (controles.moverY < 0) {
-                this.jugador.body.vy = -300;
+                this.jugador.body.vy = -170;
             }
 
             if (controles.moverY == 0) {
