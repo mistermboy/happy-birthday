@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="760145c0-6bb8-41f5-a983-fa674d723a36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Fin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/box-final-brown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Caja.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Caja.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jugador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jugador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Muro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Muro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,14 +49,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="4966" />
+          <entry key="js" value="4971" />
           <entry key="json" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="41" />
-          <entry key="JavaScript" value="4966" />
+          <entry key="JavaScript" value="4971" />
         </counts>
       </usages-collector>
     </session>
@@ -73,11 +65,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.47220448">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/GameScene.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+                <state relative-caret-position="483">
+                  <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -100,7 +92,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Caja.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="340">
@@ -179,8 +171,8 @@
         <option value="$PROJECT_DIR$/src/Fin.js" />
         <option value="$PROJECT_DIR$/src/Jugador.js" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/external/chipmunk/chipmunk.js" />
-        <option value="$PROJECT_DIR$/src/GameScene.js" />
         <option value="$PROJECT_DIR$/src/Caja.js" />
+        <option value="$PROJECT_DIR$/src/GameScene.js" />
       </list>
     </option>
   </component>
@@ -277,12 +269,12 @@
       <workItem from="1546181039107" duration="3257000" />
       <workItem from="1546186458286" duration="21570000" />
       <workItem from="1546213970809" duration="6132000" />
-      <workItem from="1546249335864" duration="11010000" />
+      <workItem from="1546249335864" duration="11483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41969000" />
+    <option name="totallyTimeSpent" value="42442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -376,13 +368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jugador.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Fin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -397,17 +382,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Caja.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Jugador.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
         </state>
       </provider>
     </entry>
