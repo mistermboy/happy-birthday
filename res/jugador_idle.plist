@@ -68,7 +68,7 @@
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:3d70b2498d34a6ce27ecd669974329db:d7e2a12efd5d53dc799168586e11d70e:b8e96a3b0eea864d9c309cc779337e95$</string>
             <key>textureFileName</key>
-            <string>jugador_avanzando.png</string>
+            <string>jugador_idle.png</string>
         </dict>
     </dict>
 </plist>
