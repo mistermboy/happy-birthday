@@ -3,6 +3,7 @@ var tipoJugador = 2;
 var tipoCaja = 3;
 
 
+
 var controles = {};
 var teclas = [];
 
@@ -18,6 +19,8 @@ var GameLayer = cc.Layer.extend({
     cajas:[],
     formasEliminar:[],
     chocandoMuro:null,
+    bloqueo:false,
+    cont:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -65,6 +68,9 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
+
+        this.cont = 20;
+
         this.scheduleUpdate();
 
 
@@ -91,7 +97,7 @@ var GameLayer = cc.Layer.extend({
         }
 
 
-
+        this.cont++;
 
 
     },cargarMapa:function () {
@@ -122,7 +128,7 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
-
+/*
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
@@ -142,7 +148,7 @@ var GameLayer = cc.Layer.extend({
             this.cajas.push(caja);
         }
 
-
+*/
 
       },
     collisionJugadorConCaja:function (arbiter, space) {
@@ -167,7 +173,6 @@ var GameLayer = cc.Layer.extend({
 
 
     },
-
     procesarKeyPressed(keyCode) {
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {
@@ -201,22 +206,30 @@ var GameLayer = cc.Layer.extend({
             case 39:
                 if (controles.moverX == 1) {
                     controles.moverX = 0;
+                    this.bloqueo = false;
+                    console.log("DESbloqueado");
                 }
                 break;
             case 37:
                 if (controles.moverX == -1) {
                     controles.moverX = 0;
+                    this.bloqueo = false;
+                    console.log("DESbloqueado");
                 }
                 break;
 
             case 38:
                 if (controles.moverY == 1) {
                     controles.moverY = 0;
+                    this.bloqueo = false;
+                    console.log("DESbloqueado");
                 }
                 break;
             case 40:
                 if (controles.moverY == -1) {
                     controles.moverY = 0;
+                    this.bloqueo = false;
+                    console.log("DESbloqueado");
                 }
                 break;
         }
@@ -224,25 +237,45 @@ var GameLayer = cc.Layer.extend({
 
 
     procesarControles() {
-        if (controles.moverX > 0) {
-            this.jugador.body.vx = 150;
-        }
-        if (controles.moverX < 0) {
-            this.jugador.body.vx = -150;
-        }
-        if (controles.moverX == 0) {
-            this.jugador.body.vx = 0;
-        }
 
-        if (controles.moverY > 0) {
-            this.jugador.body.vy = 150;
-        }
-        if (controles.moverY < 0) {
-            this.jugador.body.vy = -150;
-        }
-        if (controles.moverY == 0) {
-            this.jugador.body.vy = 0;
-        }
+
+
+
+            if (controles.moverX > 0) {
+
+                if(this.cont>=20) {
+                    this.cont =0;
+                    this.jugador.body.p.x += 100;
+                }
+
+            }
+            if (controles.moverX < 0) {
+
+                if(this.cont>=20) {
+                    this.cont =0;
+                    this.jugador.body.p.x -= 100;
+                }
+
+
+            }
+
+
+            if (controles.moverY > 0) {
+                if(this.cont>=20) {
+                    this.cont =0;
+                    this.jugador.body.p.y += 100;
+                }
+
+            }
+            if (controles.moverY < 0) {
+                if(this.cont>=20) {
+                    this.cont =0;
+                    this.jugador.body.p.y -= 100;
+                }
+
+            }
+           
+
 
     },
 
