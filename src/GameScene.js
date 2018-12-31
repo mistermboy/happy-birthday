@@ -156,17 +156,17 @@ var GameLayer = cc.Layer.extend({
 
 
         if (controles.moverX > 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x + 120;
+            shapes[1].body.p.x=this.jugador.body.p.x + 100;
         }
         if (controles.moverX < 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x - 120;
+            shapes[1].body.p.x=this.jugador.body.p.x - 100;
         }
 
         if (controles.moverY > 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y + 120;
+            shapes[1].body.p.y=this.jugador.body.p.y + 100;
         }
         if (controles.moverY < 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y - 120;
+            shapes[1].body.p.y=this.jugador.body.p.y - 100;
         }
 
 
