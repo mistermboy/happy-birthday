@@ -46,8 +46,8 @@ var GameLayer = cc.Layer.extend({
 
 
         // Depuración
-        this.depuracion = new cc.PhysicsDebugNode(this.space);
-        this.addChild(this.depuracion, 10);
+       // this.depuracion = new cc.PhysicsDebugNode(this.space);
+      //  this.addChild(this.depuracion, 10);
 
 
 

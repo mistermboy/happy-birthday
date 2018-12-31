@@ -43,8 +43,8 @@ ctor:function (gameLayer, posicion) {
 
     // forma 16px más pequeña que la imagen original
     this.shape = new cp.BoxShape(this.body,
-        this.sprite.getContentSize().width,
-        this.sprite.getContentSize().height);
+        this.sprite.getContentSize().width+16,
+        this.sprite.getContentSize().height+16);
     this.shape.setCollisionType(tipoJugador);
 
 
