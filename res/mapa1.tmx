@@ -13,7 +13,7 @@
  </layer>
  <objectgroup name="suelos"/>
  <objectgroup name="muros">
-  <object id="5" x="102" y="3">
+  <object id="5" x="200" y="3">
    <polyline points="0,0 -1,97 99,97 99,-2 3,-1"/>
   </object>
   <object id="6" x="102" y="302">

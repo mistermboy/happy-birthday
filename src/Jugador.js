@@ -51,7 +51,6 @@ ctor:function (gameLayer, posicion) {
     // forma dinamica
     gameLayer.space.addShape(this.shape);
 
-    this.shape.setElasticity(0);
     this.shape.setFriction(1);
 
 

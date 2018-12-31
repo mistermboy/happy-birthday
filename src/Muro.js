@@ -2,6 +2,7 @@ var Muro = cc.Class.extend({
     gameLayer:null,
     sprite:null,
     shape:null,
+    body:null,
     ctor:function (gameLayer, posicion) {
         this.gameLayer = gameLayer;
 
@@ -9,15 +10,14 @@ var Muro = cc.Class.extend({
         var sprite = new cc.PhysicsSprite("#box_red1.png");
         // Cuerpo estática, no le afectan las fuerzas
 
-        body = new cp.StaticBody(12);
-        body.setPos(posicion);
-        sprite.setBody(body);
+        this.body = new cp.StaticBody(12);
+        this.body.setPos(posicion);
+        sprite.setBody(this.body);
 
-        var shape = new cp.BoxShape(body,
-           sprite.width+10,
-            sprite.height+10);
+        var shape = new cp.BoxShape(this.body,
+           sprite.width,
+            sprite.height);
 
-        shape.setElasticity(0);
         shape.setFriction(1);
 
         this.gameLayer.space.addStaticShape(shape);

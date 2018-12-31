@@ -19,7 +19,6 @@ var GameLayer = cc.Layer.extend({
     cajas:[],
     formasEliminar:[],
     chocandoMuro:null,
-    bloqueo:false,
     cont:null,
     ctor:function () {
         this._super();
@@ -128,7 +127,7 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
-/*
+
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
@@ -148,7 +147,7 @@ var GameLayer = cc.Layer.extend({
             this.cajas.push(caja);
         }
 
-*/
+
 
       },
     collisionJugadorConCaja:function (arbiter, space) {
@@ -206,30 +205,22 @@ var GameLayer = cc.Layer.extend({
             case 39:
                 if (controles.moverX == 1) {
                     controles.moverX = 0;
-                    this.bloqueo = false;
-                    console.log("DESbloqueado");
                 }
                 break;
             case 37:
                 if (controles.moverX == -1) {
                     controles.moverX = 0;
-                    this.bloqueo = false;
-                    console.log("DESbloqueado");
                 }
                 break;
 
             case 38:
                 if (controles.moverY == 1) {
                     controles.moverY = 0;
-                    this.bloqueo = false;
-                    console.log("DESbloqueado");
                 }
                 break;
             case 40:
                 if (controles.moverY == -1) {
                     controles.moverY = 0;
-                    this.bloqueo = false;
-                    console.log("DESbloqueado");
                 }
                 break;
         }
@@ -239,19 +230,44 @@ var GameLayer = cc.Layer.extend({
     procesarControles() {
 
 
-
-
             if (controles.moverX > 0) {
 
-                if(this.cont>=20) {
+                //console.log(this.jugador);
+                //console.log(this.muros[0]);
+
+                var sigue = true;
+                for(var i=0;i<this.muros.length;i++) {
+
+                    console.log("1111")
+                    console.log(i)
+                    console.log(this.muros[i].body.p.x - this.jugador.body.p.x)
+                    if ( ( Math.abs(this.jugador.body.p.y - this.muros[i].body.p.y)  <= 10 )
+                        && ( this.muros[i].body.p.x - this.jugador.body.p.x <= 110 )
+                        && ( this.muros[i].body.p.x - this.jugador.body.p.x > 0 ))
+                        sigue = false
+                }
+
+                if(this.cont>=20 && sigue) {
                     this.cont =0;
                     this.jugador.body.p.x += 100;
                 }
 
             }
+
             if (controles.moverX < 0) {
 
-                if(this.cont>=20) {
+                var sigue = true;
+                for(var i=0;i<this.muros.length;i++) {
+
+                    console.log("2222")
+                    console.log(this.jugador.body.p.x - this.muros[i].body.p.x)
+                    if ( ( Math.abs(this.jugador.body.p.y - this.muros[i].body.p.y)  <=10 )
+                        && ( this.jugador.body.p.x - this.muros[i].body.p.x <= 110 )
+                        && ( this.jugador.body.p.x - this.muros[i].body.p.x > 0 ))
+                        sigue = false
+                }
+
+                if(this.cont>=20 && sigue) {
                     this.cont =0;
                     this.jugador.body.p.x -= 100;
                 }
@@ -261,20 +277,44 @@ var GameLayer = cc.Layer.extend({
 
 
             if (controles.moverY > 0) {
-                if(this.cont>=20) {
+
+                var sigue = true;
+                for(var i=0;i<this.muros.length;i++) {
+
+                    console.log("3333")
+                    console.log(this.muros[i].body.p.y - this.jugador.body.p.y)
+                    if ( ( this.muros[i].body.p.y - this.jugador.body.p.y  <=110 )
+                        && Math.abs(this.muros[i].body.p.x - this.jugador.body.p.x) <= 10
+                        && ( this.muros[i].body.p.y - this.jugador.body.p.y  > 0) )
+                        sigue = false
+                }
+
+                if(this.cont>=20 && sigue) {
                     this.cont =0;
                     this.jugador.body.p.y += 100;
                 }
 
             }
             if (controles.moverY < 0) {
-                if(this.cont>=20) {
+
+                var sigue = true;
+                for(var i=0;i<this.muros.length;i++) {
+
+                    console.log("4444")
+                    console.log(this.jugador.body.p.y - this.muros[i].body.p.y)
+                    if ( ( this.jugador.body.p.y - this.muros[i].body.p.y  <=110 )
+                        && (Math.abs(this.muros[i].body.p.x - this.jugador.body.p.x) <= 10 )
+                        && ( this.jugador.body.p.y - this.muros[i].body.p.y  > 0 ) )
+                        sigue = false
+                }
+
+                if(this.cont>=20&& sigue) {
                     this.cont =0;
                     this.jugador.body.p.y -= 100;
                 }
 
             }
-           
+
 
 
     },

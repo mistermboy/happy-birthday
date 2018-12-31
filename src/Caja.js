@@ -20,6 +20,8 @@ var Caja = cc.Class.extend({
             this.sprite.getContentSize().width,
             this.sprite.getContentSize().height);
         this.shape.setCollisionType(tipoCaja);
+
+        this.shape.setFriction(1);
         // forma estática
         gameLayer.space.addBody(this.body);
 
