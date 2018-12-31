@@ -1,6 +1,7 @@
 var tipoSuelo = 1;
 var tipoJugador = 2;
 var tipoCaja = 3;
+var tipoFinal = 4;
 
 
 
@@ -17,9 +18,9 @@ var GameLayer = cc.Layer.extend({
     mapaAncho: null,
     muros:[],
     cajas:[],
+    finales:[],
     formasEliminar:[],
     chocandoMuro:null,
-    cont:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -32,20 +33,37 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_brown_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_final_brown_plist);
 
 
         // Inicializar Space
         this.space = new cp.Space();
         this.space.gravity = cp.v(0, 0);
+
+        this.space.damping = 0.01;
+
+
+
+
         // Depuración
-        this.depuracion = new cc.PhysicsDebugNode(this.space);
-        this.addChild(this.depuracion, 10);
+        //this.depuracion = new cc.PhysicsDebugNode(this.space);
+        //this.addChild(this.depuracion, 10);
 
 
 
+        /*
 
         this.space.addCollisionHandler(tipoJugador, tipoCaja,
             null, this.collisionJugadorConCaja.bind(this), null, null);
+
+
+
+*/
+        this.space.addCollisionHandler(tipoCaja, tipoFinal,
+            null, this.colisionCajaFinal.bind(this), null, null, null);
+
+        this.space.addCollisionHandler(tipoJugador, tipoFinal,
+            null, this.colisionJugadorFinal.bind(this), null, null, null);
 
 
         this.jugador = new Jugador(this, cc.p(50,250));
@@ -68,15 +86,18 @@ var GameLayer = cc.Layer.extend({
 
 
 
-        this.cont = 20;
-
         this.scheduleUpdate();
 
 
 
         return true;
     },update:function (dt) {
+
         this.jugador.actualizar();
+
+        for(var i = 0; i < this.cajas.length; i++) {
+            this.cajas[i].actualizar();
+        }
 
         this.space.step(dt);
 
@@ -94,9 +115,6 @@ var GameLayer = cc.Layer.extend({
              this._emitter.setEmissionRate(0);
              this.tiempoEfecto = 0;
         }
-
-
-        this.cont++;
 
 
     },cargarMapa:function () {
@@ -136,9 +154,6 @@ var GameLayer = cc.Layer.extend({
             this.muros.push(muro);
         }
 
-
-
-
         var grupoCajas = this.mapa.getObjectGroup("cajas");
         var cajasArray = grupoCajas.getObjects();
         for (var i = 0; i < cajasArray.length; i++) {
@@ -147,6 +162,14 @@ var GameLayer = cc.Layer.extend({
             this.cajas.push(caja);
         }
 
+        var grupoPosFinal = this.mapa.getObjectGroup("final");
+        var finalArray = grupoPosFinal.getObjects();
+
+        for (var i = 0; i < finalArray.length; i++) {
+            var fin = new Fin(this,
+                cc.p(finalArray[i]["x"]+50, finalArray[i]["y"]-50));
+            this.finales.push(fin);
+        }
 
 
       },
@@ -155,23 +178,41 @@ var GameLayer = cc.Layer.extend({
         var shapes = arbiter.getShapes();
 
 
-        if (controles.moverX > 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x + 100;
+        if (controles.moverX > 0  && this.jugador.body.p.x < shapes[1].body.p.x) {
+            shapes[1].body.vx = this.jugador.body.vx;
         }
-        if (controles.moverX < 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x - 100;
+        if (controles.moverX < 0 && this.jugador.body.p.x > shapes[1].body.p.x) {
+            shapes[1].body.vx = this.jugador.body.vx;
         }
 
-        if (controles.moverY > 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y + 100;
+        if (controles.moverX == 0) {
+            shapes[1].body.vx = 0;
         }
-        if (controles.moverY < 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y - 100;
+
+
+        if (controles.moverY > 0 && this.jugador.body.p.y < shapes[1].body.p.y) {
+            shapes[1].body.vy = this.jugador.body.vy;
+        }
+        if (controles.moverY < 0 && this.jugador.body.p.y > shapes[1].body.p.y) {
+            shapes[1].body.vy = this.jugador.body.vy;
+        }
+
+        if (controles.moverY == 0) {
+            shapes[1].body.vy = 0;
         }
 
 
 
     },
+
+    colisionCajaFinal:function() {
+        console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+    },
+
+    colisionJugadorFinal:function() {
+
+    },
+
     procesarKeyPressed(keyCode) {
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {
@@ -231,93 +272,30 @@ var GameLayer = cc.Layer.extend({
 
 
             if (controles.moverX > 0) {
-
-                //console.log(this.jugador);
-                //console.log(this.muros[0]);
-
-                var sigue = true;
-                for(var i=0;i<this.muros.length;i++) {
-
-                    console.log("1111")
-                    console.log(i)
-                    console.log(this.muros[i].body.p.x - this.jugador.body.p.x)
-                    if ( ( Math.abs(this.jugador.body.p.y - this.muros[i].body.p.y)  <= 10 )
-                        && ( this.muros[i].body.p.x - this.jugador.body.p.x <= 110 )
-                        && ( this.muros[i].body.p.x - this.jugador.body.p.x > 0 ))
-                        sigue = false
-                }
-
-                if(this.cont>=20 && sigue) {
-                    this.cont =0;
-                    this.jugador.body.p.x += 100;
-                }
-
+                this.jugador.body.vx = 100;
             }
-
             if (controles.moverX < 0) {
-
-                var sigue = true;
-                for(var i=0;i<this.muros.length;i++) {
-
-                    console.log("2222")
-                    console.log(this.jugador.body.p.x - this.muros[i].body.p.x)
-                    if ( ( Math.abs(this.jugador.body.p.y - this.muros[i].body.p.y)  <=10 )
-                        && ( this.jugador.body.p.x - this.muros[i].body.p.x <= 110 )
-                        && ( this.jugador.body.p.x - this.muros[i].body.p.x > 0 ))
-                        sigue = false
-                }
-
-                if(this.cont>=20 && sigue) {
-                    this.cont =0;
-                    this.jugador.body.p.x -= 100;
-                }
-
-
+                this.jugador.body.vx = -100;
             }
 
+            if (controles.moverX == 0) {
+                this.jugador.body.vx = 0;
+            }
 
             if (controles.moverY > 0) {
-
-                var sigue = true;
-                for(var i=0;i<this.muros.length;i++) {
-
-                    console.log("3333")
-                    console.log(this.muros[i].body.p.y - this.jugador.body.p.y)
-                    if ( ( this.muros[i].body.p.y - this.jugador.body.p.y  <=110 )
-                        && Math.abs(this.muros[i].body.p.x - this.jugador.body.p.x) <= 10
-                        && ( this.muros[i].body.p.y - this.jugador.body.p.y  > 0) )
-                        sigue = false
-                }
-
-                if(this.cont>=20 && sigue) {
-                    this.cont =0;
-                    this.jugador.body.p.y += 100;
-                }
+            this.jugador.body.vy = 100;
 
             }
             if (controles.moverY < 0) {
+                this.jugador.body.vy = -100;
+            }
 
-                var sigue = true;
-                for(var i=0;i<this.muros.length;i++) {
-
-                    console.log("4444")
-                    console.log(this.jugador.body.p.y - this.muros[i].body.p.y)
-                    if ( ( this.jugador.body.p.y - this.muros[i].body.p.y  <=110 )
-                        && (Math.abs(this.muros[i].body.p.x - this.jugador.body.p.x) <= 10 )
-                        && ( this.jugador.body.p.y - this.muros[i].body.p.y  > 0 ) )
-                        sigue = false
-                }
-
-                if(this.cont>=20&& sigue) {
-                    this.cont =0;
-                    this.jugador.body.p.y -= 100;
-                }
-
+            if (controles.moverY == 0) {
+                this.jugador.body.vy = 0;
             }
 
 
-
-    },
+    }
 
 });
 

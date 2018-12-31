@@ -10,7 +10,7 @@ var Muro = cc.Class.extend({
         var sprite = new cc.PhysicsSprite("#box_red1.png");
         // Cuerpo estática, no le afectan las fuerzas
 
-        this.body = new cp.StaticBody(12);
+        this.body = new cp.StaticBody(100);
         this.body.setPos(posicion);
         sprite.setBody(this.body);
 

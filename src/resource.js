@@ -6,6 +6,7 @@ var res = {
     menu_titulo_png : "res/menu_titulo.png",
     tiles32_png: "res/tiles32.png",
     mapa1_tmx: "res/mapa1.tmx",
+    mapa2_tmx: "res/mapa2.tmx",
     moneda_png : "res/moneda.png",
     moneda_plist : "res/moneda.plist",
     jugador_avanzando_png : "res/jugador_avanzando.png",
@@ -24,7 +25,9 @@ var res = {
     box_red_png : "res/box_red.png",
     box_red_plist : "res/box_red.plist",
     box_brown_png : "res/box_brown.png",
-    box_brown_plist : "res/box_brown.plist"
+    box_brown_plist : "res/box_brown.plist",
+    box_final_brown_png : "res/box_final_brown.png",
+    box_final_brown_plist : "res/box_final_brown.plist"
 };
 
 var g_resources = [];
