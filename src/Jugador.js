@@ -15,7 +15,7 @@ ctor:function (gameLayer, posicion) {
 
     var framesAnimacion = [];
     for (var i = 1; i <= 4; i++) {
-        var str = "jugador_avanzando" + i + ".png";
+        var str = "jugador_caminar" + i + ".png";
         var frame = cc.spriteFrameCache.getSpriteFrame(str);
         framesAnimacion.push(frame);
     }
@@ -26,9 +26,9 @@ ctor:function (gameLayer, posicion) {
     this.aCaminar.retain();
 
     // Crear Sprite - Cuerpo y forma
-    this.sprite = new cc.PhysicsSprite("#jugador_avanzando1.png");
+    this.sprite = new cc.PhysicsSprite("#jugador_caminar1.png");
     // Cuerpo dinámico, SI le afectan las fuerzas
-    this.body = new cp.Body(0.1, cp.momentForBox(1,
+    this.body = new cp.Body(1, cp.momentForBox(1,
         this.sprite.getContentSize().width,
         this.sprite.getContentSize().height));
 

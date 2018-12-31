@@ -40,14 +40,14 @@ var GameLayer = cc.Layer.extend({
         this.space = new cp.Space();
         this.space.gravity = cp.v(0, 0);
 
-        this.space.damping = 0.01;
+        this.space.damping = 0.0001;
 
 
 
 
         // Depuración
-        //this.depuracion = new cc.PhysicsDebugNode(this.space);
-        //this.addChild(this.depuracion, 10);
+        this.depuracion = new cc.PhysicsDebugNode(this.space);
+        this.addChild(this.depuracion, 10);
 
 
 
@@ -173,37 +173,6 @@ var GameLayer = cc.Layer.extend({
 
 
       },
-    collisionJugadorConCaja:function (arbiter, space) {
-
-        var shapes = arbiter.getShapes();
-
-
-        if (controles.moverX > 0  && this.jugador.body.p.x < shapes[1].body.p.x) {
-            shapes[1].body.vx = this.jugador.body.vx;
-        }
-        if (controles.moverX < 0 && this.jugador.body.p.x > shapes[1].body.p.x) {
-            shapes[1].body.vx = this.jugador.body.vx;
-        }
-
-        if (controles.moverX == 0) {
-            shapes[1].body.vx = 0;
-        }
-
-
-        if (controles.moverY > 0 && this.jugador.body.p.y < shapes[1].body.p.y) {
-            shapes[1].body.vy = this.jugador.body.vy;
-        }
-        if (controles.moverY < 0 && this.jugador.body.p.y > shapes[1].body.p.y) {
-            shapes[1].body.vy = this.jugador.body.vy;
-        }
-
-        if (controles.moverY == 0) {
-            shapes[1].body.vy = 0;
-        }
-
-
-
-    },
 
     colisionCajaFinal:function() {
         console.log("HAS GAANAAAAADOOOOOOOOOOOO")
@@ -272,10 +241,10 @@ var GameLayer = cc.Layer.extend({
 
 
             if (controles.moverX > 0) {
-                this.jugador.body.vx = 100;
+                this.jugador.body.vx = 170;
             }
             if (controles.moverX < 0) {
-                this.jugador.body.vx = -100;
+                this.jugador.body.vx = -170;
             }
 
             if (controles.moverX == 0) {
@@ -283,11 +252,11 @@ var GameLayer = cc.Layer.extend({
             }
 
             if (controles.moverY > 0) {
-            this.jugador.body.vy = 100;
+            this.jugador.body.vy = 170;
 
             }
             if (controles.moverY < 0) {
-                this.jugador.body.vy = -100;
+                this.jugador.body.vy = -170;
             }
 
             if (controles.moverY == 0) {
