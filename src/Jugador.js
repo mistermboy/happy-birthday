@@ -28,7 +28,7 @@ ctor:function (gameLayer, posicion) {
     // Crear Sprite - Cuerpo y forma
     this.sprite = new cc.PhysicsSprite("#jugador_avanzando1.png");
     // Cuerpo dinámico, SI le afectan las fuerzas
-    this.body = new cp.Body(5, cp.momentForBox(1,
+    this.body = new cp.Body(0.1, cp.momentForBox(1,
         this.sprite.getContentSize().width,
         this.sprite.getContentSize().height));
 
@@ -43,11 +43,15 @@ ctor:function (gameLayer, posicion) {
 
     // forma 16px más pequeña que la imagen original
     this.shape = new cp.BoxShape(this.body,
-        this.sprite.getContentSize().width - 16,
-        this.sprite.getContentSize().height - 16);
+        this.sprite.getContentSize().width,
+        this.sprite.getContentSize().height);
     this.shape.setCollisionType(tipoJugador);
+
+
     // forma dinamica
     gameLayer.space.addShape(this.shape);
+
+    this.shape.setFriction(0.1);
 
 
     // ejecutar la animación
@@ -58,6 +62,12 @@ ctor:function (gameLayer, posicion) {
 
 },
     actualizar: function (){
+
+        this.body.rot = new cp.Vect(1,0);
+
+
+        this.sprite.setRotationX(1);
+
         switch ( this.estado ){
             case estadoCaminando:
                 if (this.animacion != this.aCaminar){
@@ -67,6 +77,10 @@ ctor:function (gameLayer, posicion) {
                 }
                 break;
         }
+        this.sprite.setRotation(0);
+        this.sprite.setRotationX(0);
+        this.sprite.setRotationY(0);
+
 }
 
 

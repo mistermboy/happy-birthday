@@ -1,4 +1,4 @@
-var Caja = cc.Class.extend({
+var Fin = cc.Class.extend({
     gameLayer:null,
     sprite:null,
     shape:null,
@@ -8,28 +8,23 @@ var Caja = cc.Class.extend({
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        this.sprite = new cc.PhysicsSprite("#box_brown1.png");
+        this.sprite = new cc.PhysicsSprite("#box_final_brown1.png");
         // Cuerpo estática, no le afectan las fuerzas
 
-        this.body = new cp.Body(1, cp.momentForBox(1, this.sprite.width, this.sprite.height));
+        this.body = new cp.StaticBody(100);
         this.body.setPos(posicion);
         this.sprite.setBody(this.body);
 
-        this.gameLayer.space.addBody(this.body);
-
         var shape = new cp.BoxShape(this.body,
-            this.sprite.width,
-            this.sprite.height);
+            this.sprite.width - 16,
+            this.sprite.height - 16);
 
 
-        shape.setCollisionType(tipoCaja);
-        shape.setFriction(0.1);
+        shape.setCollisionType(tipoFinal);
+        shape.setFriction(1);
 
-
-        shape.setElasticity(1);
-
-        this.gameLayer.space.addShape(shape);
-        this.gameLayer.addChild(this.sprite, 10);
+        this.gameLayer.space.addStaticShape(shape);
+        this.gameLayer.addChild(this.sprite, 1);
     },
 
     actualizar: function() {
@@ -37,6 +32,7 @@ var Caja = cc.Class.extend({
         this.sprite.setRotation(0);
         this.sprite.setRotationX(0);
         this.sprite.setRotationY(0);
+
     }
 
 });

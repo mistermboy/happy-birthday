@@ -14,6 +14,8 @@
         "src/resource.js",
         "src/GameScene.js",
         "src/Jugador.js",
-        "src/Caja.js"
+        "src/Caja.js",
+        "src/Muro.js",
+        "src/Fin.js"
     ]
 }

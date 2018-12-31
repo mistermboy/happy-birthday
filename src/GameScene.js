@@ -1,7 +1,8 @@
 var tipoSuelo = 1;
 var tipoJugador = 2;
 var tipoCaja = 3;
-var tipoMuro = 4;
+var tipoFinal = 4;
+
 
 
 var controles = {};
@@ -15,10 +16,11 @@ var GameLayer = cc.Layer.extend({
     jugador: null,
     mapa: null,
     mapaAncho: null,
-    monedas:[],
-    enemigos:[],
-    pinchos:[],
+    muros:[],
+    cajas:[],
+    finales:[],
     formasEliminar:[],
+    chocandoMuro:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -31,20 +33,38 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_brown_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_final_brown_plist);
 
 
         // Inicializar Space
         this.space = new cp.Space();
         this.space.gravity = cp.v(0, 0);
+
+        this.space.damping = 0.01;
+
+
+
+
         // Depuración
-        this.depuracion = new cc.PhysicsDebugNode(this.space);
-        this.addChild(this.depuracion, 10);
+        //this.depuracion = new cc.PhysicsDebugNode(this.space);
+        //this.addChild(this.depuracion, 10);
 
 
 
+        /*
 
         this.space.addCollisionHandler(tipoJugador, tipoCaja,
             null, this.collisionJugadorConCaja.bind(this), null, null);
+
+
+
+*/
+        this.space.addCollisionHandler(tipoCaja, tipoFinal,
+            null, this.colisionCajaFinal.bind(this), null, null, null);
+
+        this.space.addCollisionHandler(tipoJugador, tipoFinal,
+            null, this.colisionJugadorFinal.bind(this), null, null, null);
+
 
         this.jugador = new Jugador(this, cc.p(50,250));
         this.cargarMapa();
@@ -65,13 +85,19 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
+
         this.scheduleUpdate();
 
 
 
         return true;
     },update:function (dt) {
+
         this.jugador.actualizar();
+
+        for(var i = 0; i < this.cajas.length; i++) {
+            this.cajas[i].actualizar();
+        }
 
         this.space.step(dt);
 
@@ -89,9 +115,6 @@ var GameLayer = cc.Layer.extend({
              this._emitter.setEmissionRate(0);
              this.tiempoEfecto = 0;
         }
-
-
-
 
 
     },cargarMapa:function () {
@@ -122,15 +145,32 @@ var GameLayer = cc.Layer.extend({
              }
          }
 
+
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
-            var moneda = new Caja(this,
+            var muro = new Muro(this,
                 cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
-            this.monedas.push(moneda);
+            this.muros.push(muro);
         }
 
-        console.log(this.monedas);
+        var grupoCajas = this.mapa.getObjectGroup("cajas");
+        var cajasArray = grupoCajas.getObjects();
+        for (var i = 0; i < cajasArray.length; i++) {
+            var caja = new Caja(this,
+                cc.p(cajasArray[i]["x"]+50,cajasArray[i]["y"]-50));
+            this.cajas.push(caja);
+        }
+
+        var grupoPosFinal = this.mapa.getObjectGroup("final");
+        var finalArray = grupoPosFinal.getObjects();
+
+        for (var i = 0; i < finalArray.length; i++) {
+            var fin = new Fin(this,
+                cc.p(finalArray[i]["x"]+50, finalArray[i]["y"]-50));
+            this.finales.push(fin);
+        }
+
 
       },
     collisionJugadorConCaja:function (arbiter, space) {
@@ -138,21 +178,38 @@ var GameLayer = cc.Layer.extend({
         var shapes = arbiter.getShapes();
 
 
-        if (controles.moverX > 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x + 100;
+        if (controles.moverX > 0  && this.jugador.body.p.x < shapes[1].body.p.x) {
+            shapes[1].body.vx = this.jugador.body.vx;
         }
-        if (controles.moverX < 0) {
-            shapes[1].body.p.x=this.jugador.body.p.x - 100;
+        if (controles.moverX < 0 && this.jugador.body.p.x > shapes[1].body.p.x) {
+            shapes[1].body.vx = this.jugador.body.vx;
         }
 
-        if (controles.moverY > 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y + 100;
-        }
-        if (controles.moverY < 0) {
-            shapes[1].body.p.y=this.jugador.body.p.y - 100;
+        if (controles.moverX == 0) {
+            shapes[1].body.vx = 0;
         }
 
 
+        if (controles.moverY > 0 && this.jugador.body.p.y < shapes[1].body.p.y) {
+            shapes[1].body.vy = this.jugador.body.vy;
+        }
+        if (controles.moverY < 0 && this.jugador.body.p.y > shapes[1].body.p.y) {
+            shapes[1].body.vy = this.jugador.body.vy;
+        }
+
+        if (controles.moverY == 0) {
+            shapes[1].body.vy = 0;
+        }
+
+
+
+    },
+
+    colisionCajaFinal:function() {
+        console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+    },
+
+    colisionJugadorFinal:function() {
 
     },
 
@@ -212,27 +269,33 @@ var GameLayer = cc.Layer.extend({
 
 
     procesarControles() {
-        if (controles.moverX > 0) {
-            this.jugador.body.vx = 150;
-        }
-        if (controles.moverX < 0) {
-            this.jugador.body.vx = -150;
-        }
-        if (controles.moverX == 0) {
-            this.jugador.body.vx = 0;
-        }
 
-        if (controles.moverY > 0) {
-            this.jugador.body.vy = 150;
-        }
-        if (controles.moverY < 0) {
-            this.jugador.body.vy = -150;
-        }
-        if (controles.moverY == 0) {
-            this.jugador.body.vy = 0;
-        }
 
-    },
+            if (controles.moverX > 0) {
+                this.jugador.body.vx = 100;
+            }
+            if (controles.moverX < 0) {
+                this.jugador.body.vx = -100;
+            }
+
+            if (controles.moverX == 0) {
+                this.jugador.body.vx = 0;
+            }
+
+            if (controles.moverY > 0) {
+            this.jugador.body.vy = 100;
+
+            }
+            if (controles.moverY < 0) {
+                this.jugador.body.vy = -100;
+            }
+
+            if (controles.moverY == 0) {
+                this.jugador.body.vy = 0;
+            }
+
+
+    }
 
 });
 
