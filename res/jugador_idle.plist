@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>jugador_avanzando1.png</key>
+            <key>jugador_idle1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,0},{60,60}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{60,60}</string>
             </dict>
-            <key>jugador_avanzando2.png</key>
+            <key>jugador_idle2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{60,0},{60,60}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{60,60}</string>
             </dict>
-            <key>jugador_avanzando3.png</key>
+            <key>jugador_idle3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{120,0},{60,60}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{60,60}</string>
             </dict>
-            <key>jugador_avanzando4.png</key>
+            <key>jugador_idle4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{180,0},{60,60}}</string>
@@ -62,7 +62,7 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>jugador_avanzando.png</string>
+            <string>jugador_idle.png</string>
             <key>size</key>
             <string>{60,240}</string>
             <key>smartupdate</key>
