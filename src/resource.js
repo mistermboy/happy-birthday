@@ -7,16 +7,24 @@ var res = {
     tiles32_png: "res/tiles32.png",
     mapa1_tmx: "res/mapa1.tmx",
     mapa2_tmx: "res/mapa2.tmx",
-    moneda_png : "res/moneda.png",
-    moneda_plist : "res/moneda.plist",
-    jugador_avanzando_png : "res/jugador_caminar.png",
-    jugador_avanzando_plist : "res/jugador_caminar.plist",
+
+    jugador_der_png : "res/jugador_der.png",
+    jugador_der_plist : "res/jugador_der.plist",
+    jugador_izq_png : "res/jugador_izq.png",
+    jugador_izq_plist : "res/jugador_izq.plist",
+
+    jugador_idle_png : "res/jugador_idle.png",
+    jugador_idle_plist : "res/jugador_idle.plist",
+
+    jugador_arriba_png : "res/jugador_arriba.png",
+    jugador_arriba_plist : "res/jugador_arriba.plist",
+    jugador_abajo_png : "res/jugador_bajar.png",
+    jugador_abajo_plist : "res/jugador_bajar.plist",
+
     jugador_caminar_png : "res/jugador_caminar.png",
     jugador_caminar_plist : "res/jugador_caminar.plist",
-    jugador_subiendo_png : "res/jugador_subiendo.png",
-    jugador_subiendo_plist : "res/jugador_subiendo.plist",
-    jugador_impactado_png: "res/jugador_impactado.png",
-    jugador_impactado_plist: "res/jugador_impactado.plist",
+
+
     boton_saltar_png: "res/boton_saltar.png",
     animacion_cuervo_png: "res/animacion_cuervo.png",
     animacion_cuervo_plist: "res/animacion_cuervo.plist",

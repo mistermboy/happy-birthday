@@ -26,9 +26,13 @@ var GameLayer = cc.Layer.extend({
         var size = cc.winSize;
 
 
-        cc.spriteFrameCache.addSpriteFrames(res.jugador_subiendo_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.jugador_avanzando_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.jugador_impactado_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.jugador_abajo_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.jugador_arriba_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.jugador_der_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.jugador_izq_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.jugador_idle_plist);
+
+
         cc.spriteFrameCache.addSpriteFrames(res.animacion_cuervo_plist);
         cc.spriteFrameCache.addSpriteFrames(res.animaciontigre_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
@@ -46,8 +50,8 @@ var GameLayer = cc.Layer.extend({
 
 
         // Depuración
-        this.depuracion = new cc.PhysicsDebugNode(this.space);
-        this.addChild(this.depuracion, 10);
+       // this.depuracion = new cc.PhysicsDebugNode(this.space);
+      //  this.addChild(this.depuracion, 10);
 
 
 
@@ -241,25 +245,30 @@ var GameLayer = cc.Layer.extend({
 
 
             if (controles.moverX > 0) {
+                this.jugador.estado = estadoCaminandoDerecha;
                 this.jugador.body.vx = 170;
             }
             if (controles.moverX < 0) {
+                this.jugador.estado = estadoCaminandoIzquierda;
                 this.jugador.body.vx = -170;
             }
 
             if (controles.moverX == 0) {
+                this.jugador.estado = estadoQuieto;
                 this.jugador.body.vx = 0;
             }
 
             if (controles.moverY > 0) {
-            this.jugador.body.vy = 170;
-
+                this.jugador.body.vy = 170;
+                this.jugador.estado = estadoCaminandoArriba;
             }
             if (controles.moverY < 0) {
                 this.jugador.body.vy = -170;
+                this.jugador.estado = estadoCaminandoAbajo;
             }
 
             if (controles.moverY == 0) {
+              //  this.jugador.estado = estadoQuieto;
                 this.jugador.body.vy = 0;
             }
 
