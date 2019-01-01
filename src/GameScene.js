@@ -23,9 +23,9 @@ var GameLayer = cc.Layer.extend({
     finalMarron:null,
     finalAzul:null,
     finalVerde:null,
-    isFinalMarron:false,
-    isFinalAzul:false,
-    isFinalVerde:false,
+    isFinalMarron:true,
+    isFinalAzul:true,
+    isFinalVerde:true,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -101,6 +101,13 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
+
+
+
+        this.isFinalMarron = true;
+        this.isFinalAzul = true;
+        this.isFinalVerde = true;
+
         var posicionXJugador = this.jugador.body.p.x - 200;
         this.setPosition(cc.p( -posicionXJugador,20));
 
@@ -113,33 +120,39 @@ var GameLayer = cc.Layer.extend({
 
         this.jugador.actualizar();
 
-
-        this.isFinalMarron = false;
-        for(var i=0;i<this.marrones.length;i++){
-            if((Math.abs(this.marrones[i].body.p.x - this.finalMarron.body.p.x) < 10)
-                && (Math.abs(this.marrones[i].body.p.y - this.finalMarron.body.p.y) < 10))
-                this.isFinalMarron = true;
+        if (this.finalMarron != null) {
+            this.isFinalMarron = false;
+            for (var i = 0; i < this.marrones.length; i++) {
+                if ((Math.abs(this.marrones[i].body.p.x - this.finalMarron.body.p.x) < 10)
+                    && (Math.abs(this.marrones[i].body.p.y - this.finalMarron.body.p.y) < 10))
+                    this.isFinalMarron = true;
+            }
         }
 
-        this.isFinalAzul = false;
-        for(var i=0;i<this.azules.length;i++){
-            if((Math.abs(this.azules[i].body.p.x - this.finalAzul.body.p.x) < 10)
-                && (Math.abs(this.azules[i].body.p.y - this.finalAzul.body.p.y) < 10))
-                this.isFinalAzul = true;
+        if (this.finalAzul != null) {
+            this.isFinalAzul = false;
+            for (var i = 0; i < this.azules.length; i++) {
+                if ((Math.abs(this.azules[i].body.p.x - this.finalAzul.body.p.x) < 10)
+                    && (Math.abs(this.azules[i].body.p.y - this.finalAzul.body.p.y) < 10))
+                    this.isFinalAzul = true;
+            }
         }
 
 
-        this.isFinalVerde = false;
-        for(var i=0;i<this.verdes.length;i++){
-            if((Math.abs(this.verdes[i].body.p.x - this.finalVerde.body.p.x) < 10)
-                && (Math.abs(this.verdes[i].body.p.y - this.finalVerde.body.p.y) < 10))
-                this.isFinalVerde = true;
+        if (this.finalVerde != null){
+            this.isFinalVerde = false;
+            for (var i = 0; i < this.verdes.length; i++) {
+                if ((Math.abs(this.verdes[i].body.p.x - this.finalVerde.body.p.x) < 10)
+                    && (Math.abs(this.verdes[i].body.p.y - this.finalVerde.body.p.y) < 10))
+                    this.isFinalVerde = true;
+            }
         }
-
 
 
         if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde)
             console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+
+
 
         for(var i = 0; i < this.marrones.length; i++) {
             this.marrones[i].actualizar();
