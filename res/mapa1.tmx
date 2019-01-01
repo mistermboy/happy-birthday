@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="23">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="28">
  <tileset firstgid="1" name="box-backgrounb" tilewidth="100" tileheight="100" tilecount="1" columns="1">
   <image source="box-backgrounb.png" width="100" height="100"/>
  </tileset>
@@ -17,24 +17,38 @@
   </object>
  </objectgroup>
  <objectgroup name="muros">
-  <object id="5" x="200" y="3">
-   <polyline points="0,0 -1,97 99,97 99,-2 3,-1"/>
-  </object>
   <object id="6" x="102" y="302">
    <polyline points="0,0 97,-1 97,97 -1,98 -1,1"/>
   </object>
  </objectgroup>
- <objectgroup name="cajas">
-  <object id="8" x="101" y="201">
-   <polyline points="0,0 98,-1 98,97 1,97 0,0"/>
+ <objectgroup name="fmarron">
+  <object id="26" x="301" y="203">
+   <polyline points="0,0 -1,95 100,96 100,1 1,-1"/>
   </object>
+ </objectgroup>
+ <objectgroup name="marrones">
   <object id="19" x="203" y="199">
    <polyline points="0,0 98,-1 98,97 1,97 0,0"/>
   </object>
  </objectgroup>
- <objectgroup name="final">
+ <objectgroup name="fazul">
   <object id="9" x="301" y="103">
    <polyline points="0,0 99,-1 98,98 0,98 0,-2"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="azules">
+  <object id="23" x="102" y="103">
+   <polyline points="0,0 97,-1 96,92 0,95 0,-2"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="fverde">
+  <object id="27" x="302" y="3">
+   <polyline points="0,0 -1,94 98,95 100,-2 0,-1"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="verdes">
+  <object id="24" x="202" y="3">
+   <polyline points="0,0 -2,90 98,92 98,-1 0,-1"/>
   </object>
  </objectgroup>
 </map>
