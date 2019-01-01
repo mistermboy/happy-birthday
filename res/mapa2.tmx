@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="100" tileheight="100" nextobjectid="7">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="34">
  <tileset firstgid="1" name="box-backgrounb" tilewidth="100" tileheight="100" tilecount="1" columns="1">
   <image source="box-backgrounb.png" width="100" height="100"/>
  </tileset>
- <layer name="Fondo" width="10" height="10">
+ <tileset firstgid="2" name="boxes" tilewidth="100" tileheight="100" tilecount="4" columns="4">
+  <image source="boxes.png" width="400" height="100"/>
+ </tileset>
+ <layer name="Fondo" width="4" height="4">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFgwYDAFB4AGU=
+   eJxjZGBgYKQAAwACYAAR
   </data>
  </layer>
  <objectgroup name="suelos">
-  <object id="2" x="-5.33333" y="-10.6667">
-   <polyline points="0,0 0,1014.67 1009.33,1016 1010.67,0 0,-1.33333"/>
+  <object id="21" x="-9" y="-6.92629">
+   <polyline points="0,0 0,413.926 418,413.926 415.951,-3.07371 1.02451,-1.02457"/>
   </object>
  </objectgroup>
  <objectgroup name="muros">
-  <object id="3" x="300" y="97.3333">
-   <polyline points="0,0 -1.33333,100 98.6667,101.333 100,-4 -1.33333,0"/>
+  <object id="29" x="100" y="99">
+   <polyline points="0,0 0,94 100,96 100,2 -1,3"/>
   </object>
-  <object id="4" x="698.667" y="300">
-   <polyline points="0,0 0,93.3333 97.3333,97.3333 98.6667,-2.66667 1.33333,0"/>
-  </object>
-  <object id="5" x="700" y="694.667">
-   <polyline points="0,0 0,100 98.6667,104 97.3333,4 4,-1.33333"/>
+  <object id="31" x="303" y="102">
+   <polyline points="0,0 -3,99 96,99 96,0 3,1"/>
   </object>
  </objectgroup>
- <objectgroup name="cajas">
-  <object id="6" x="201.333" y="396">
-   <polyline points="0,0 -4,102.667 97.3333,102.667 96,2.66667 -1.33333,1.33333"/>
+ <objectgroup name="fmarron">
+  <object id="30" x="302" y="1">
+   <polyline points="0,0 -1,97 97,97 98,2 0,-1"/>
   </object>
  </objectgroup>
- <objectgroup name="final">
-  <object id="1" x="798.667" y="498.667">
-   <polyline points="0,0 0,97.3333 101.333,98.6667 101.333,0 1.33333,0"/>
+ <objectgroup name="marrones">
+  <object id="28" x="102" y="201">
+   <polyline points="0,0 -2,94 97,98 98,-1 1,-1"/>
   </object>
  </objectgroup>
+ <objectgroup name="fazul">
+  <object id="33" x="302" y="300">
+   <polyline points="0,0 1,97 96,96 97,1 3,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="azules">
+  <object id="32" x="201" y="306">
+   <polyline points="0,0 1,89 101,92 99,-5 1,-2"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="fverde"/>
+ <objectgroup name="verdes"/>
 </map>
