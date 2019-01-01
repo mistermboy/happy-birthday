@@ -23,9 +23,11 @@ var GameLayer = cc.Layer.extend({
     finalMarron:null,
     finalAzul:null,
     finalVerde:null,
-    isFinalMarron:false,
-    isFinalAzul:false,
-    isFinalVerde:false,
+    isFinalMarron:true,
+    isFinalAzul:true,
+    isFinalVerde:true,
+    rutaMapa:null,
+    nivel:1,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -83,6 +85,13 @@ var GameLayer = cc.Layer.extend({
 
 
         this.jugador = new Jugador(this, cc.p(50,250));
+
+
+        if(this.nivel == 1)
+            this.rutaMapa = res.mapa1_tmx;
+        else if(this.nivel == 2)
+            this.rutaMapa = res.mapa2_tmx;
+        
         this.cargarMapa();
 
 
@@ -101,6 +110,12 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
+
+
+        this.isFinalMarron = true;
+        this.isFinalAzul = true;
+        this.isFinalVerde = true;
+
         var posicionXJugador = this.jugador.body.p.x - 200;
         this.setPosition(cc.p( -posicionXJugador,20));
 
@@ -113,33 +128,42 @@ var GameLayer = cc.Layer.extend({
 
         this.jugador.actualizar();
 
-
-        this.isFinalMarron = false;
-        for(var i=0;i<this.marrones.length;i++){
-            if((Math.abs(this.marrones[i].body.p.x - this.finalMarron.body.p.x) < 10)
-                && (Math.abs(this.marrones[i].body.p.y - this.finalMarron.body.p.y) < 10))
-                this.isFinalMarron = true;
+        if (this.finalMarron != null) {
+            this.isFinalMarron = false;
+            for (var i = 0; i < this.marrones.length; i++) {
+                if ((Math.abs(this.marrones[i].body.p.x - this.finalMarron.body.p.x) < 10)
+                    && (Math.abs(this.marrones[i].body.p.y - this.finalMarron.body.p.y) < 10))
+                    this.isFinalMarron = true;
+            }
         }
 
-        this.isFinalAzul = false;
-        for(var i=0;i<this.azules.length;i++){
-            if((Math.abs(this.azules[i].body.p.x - this.finalAzul.body.p.x) < 10)
-                && (Math.abs(this.azules[i].body.p.y - this.finalAzul.body.p.y) < 10))
-                this.isFinalAzul = true;
-        }
-
-
-        this.isFinalVerde = false;
-        for(var i=0;i<this.verdes.length;i++){
-            if((Math.abs(this.verdes[i].body.p.x - this.finalVerde.body.p.x) < 10)
-                && (Math.abs(this.verdes[i].body.p.y - this.finalVerde.body.p.y) < 10))
-                this.isFinalVerde = true;
+        if (this.finalAzul != null) {
+            this.isFinalAzul = false;
+            for (var i = 0; i < this.azules.length; i++) {
+                if ((Math.abs(this.azules[i].body.p.x - this.finalAzul.body.p.x) < 10)
+                    && (Math.abs(this.azules[i].body.p.y - this.finalAzul.body.p.y) < 10))
+                    this.isFinalAzul = true;
+            }
         }
 
 
+        if (this.finalVerde != null){
+            this.isFinalVerde = false;
+            for (var i = 0; i < this.verdes.length; i++) {
+                if ((Math.abs(this.verdes[i].body.p.x - this.finalVerde.body.p.x) < 10)
+                    && (Math.abs(this.verdes[i].body.p.y - this.finalVerde.body.p.y) < 10))
+                    this.isFinalVerde = true;
+            }
+        }
 
-        if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde)
-            console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+
+        if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde){
+            this.ctor();
+            this.nivel++;
+        }
+
+
+
 
         for(var i = 0; i < this.marrones.length; i++) {
             this.marrones[i].actualizar();
@@ -173,7 +197,7 @@ var GameLayer = cc.Layer.extend({
 
 
     },cargarMapa:function () {
-         this.mapa = new cc.TMXTiledMap(res.mapa1_tmx);
+         this.mapa = new cc.TMXTiledMap(this.rutaMapa);
          // Añadirlo a la Layer
          this.addChild(this.mapa);
          // Ancho del mapa
@@ -209,7 +233,7 @@ var GameLayer = cc.Layer.extend({
             this.barreras.push(muro);
         }
 
-        /*
+
         var grupoHoles = this.mapa.getObjectGroup("holes");
         var holesArray = grupoHoles.getObjects();
         for (var i = 0; i < holesArray.length; i++) {
@@ -218,7 +242,7 @@ var GameLayer = cc.Layer.extend({
             this.barreras.push(muro);
         }
 
-*/
+
 
         var grupoMarrones = this.mapa.getObjectGroup("marrones");
         var marronesArray = grupoMarrones.getObjects();
