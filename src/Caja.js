@@ -2,13 +2,13 @@ var Caja = cc.Class.extend({
     gameLayer:null,
     sprite:null,
     shape:null,
-    ctor:function (gameLayer, posicion) {
+    ctor:function (gameLayer, posicion, color) {
         this.gameLayer = gameLayer;
 
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        this.sprite = new cc.PhysicsSprite("#box_brown1.png");
+        this.sprite = new cc.PhysicsSprite("#box_"+color+"1.png");
         // Cuerpo estática, no le afectan las fuerzas
 
         this.body = new cp.Body(10, cp.momentForBox(1, this.sprite.width, this.sprite.height));

@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>box_green1.png</key>
+			<key>box-hole1.png</key>
 			<dict>
 				<key>frame</key>
 				<string>{{0,0},{100,100}}</string>
@@ -27,7 +27,7 @@
 			<key>size</key>
 			<string>{100,100}</string>
 			<key>textureFileName</key>
-			<string>box_green.png</string>
+			<string>box-hole.png</string>
 			</dict>
 		</dict>
 </plist>

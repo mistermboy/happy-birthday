@@ -1,13 +1,13 @@
-var Muro = cc.Class.extend({
+var Barrera = cc.Class.extend({
     gameLayer:null,
     sprite:null,
     shape:null,
     body:null,
-    ctor:function (gameLayer, posicion) {
+    ctor:function (gameLayer, posicion,tipo) {
         this.gameLayer = gameLayer;
 
         // Crear Sprite - Cuerpo y forma
-        var sprite = new cc.PhysicsSprite("#box_red1.png");
+        var sprite = new cc.PhysicsSprite(tipo);
         // Cuerpo estática, no le afectan las fuerzas
 
         this.body = new cp.StaticBody(100);

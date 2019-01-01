@@ -45,7 +45,12 @@ var res = {
     box_final_blue_png : "res/box_final_blue.png",
     box_final_blue_plist : "res/box_final_blue.plist",
     box_final_green_png : "res/box_final_green.png",
-    box_final_green_plist : "res/box_final_green.plist"
+    box_final_green_plist : "res/box_final_green.plist",
+
+    box_hole_png: "res/box-hole.png",
+    box_hole_plist: "res/box-hole.plist"
+
+
 };
 
 var g_resources = [];

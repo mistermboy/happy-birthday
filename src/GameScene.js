@@ -16,12 +16,16 @@ var GameLayer = cc.Layer.extend({
     jugador: null,
     mapa: null,
     mapaAncho: null,
-    muros:[],
-    cajas:[],
-    finalCaja:null,
-    formasEliminar:[],
-    chocandoMuro:null,
-    isFinal:false,
+    barreras:[],
+    marrones:[],
+    azules:[],
+    verdes:[],
+    finalMarron:null,
+    finalAzul:null,
+    finalVerde:null,
+    isFinalMarron:false,
+    isFinalAzul:false,
+    isFinalVerde:false,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -43,6 +47,8 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.box_final_green_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_blue_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_final_blue_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_hole_plist);
+
 
         // Inicializar Space
         this.space = new cp.Space();
@@ -95,6 +101,8 @@ var GameLayer = cc.Layer.extend({
         }, this);
 
 
+        var posicionXJugador = this.jugador.body.p.x - 200;
+        this.setPosition(cc.p( -posicionXJugador,20));
 
         this.scheduleUpdate();
 
@@ -106,21 +114,45 @@ var GameLayer = cc.Layer.extend({
         this.jugador.actualizar();
 
 
-        this.isFinal = false;
-        for(var i=0;i<this.cajas.length;i++){
-            if((Math.abs(this.cajas[i].body.p.x - this.finalCaja.body.p.x) < 10)
-                && (Math.abs(this.cajas[i].body.p.y - this.finalCaja.body.p.y) < 10))
-                this.isFinal = true;
+        this.isFinalMarron = false;
+        for(var i=0;i<this.marrones.length;i++){
+            if((Math.abs(this.marrones[i].body.p.x - this.finalMarron.body.p.x) < 10)
+                && (Math.abs(this.marrones[i].body.p.y - this.finalMarron.body.p.y) < 10))
+                this.isFinalMarron = true;
         }
 
-        console.log(this.isFinal)
+        this.isFinalAzul = false;
+        for(var i=0;i<this.azules.length;i++){
+            if((Math.abs(this.azules[i].body.p.x - this.finalAzul.body.p.x) < 10)
+                && (Math.abs(this.azules[i].body.p.y - this.finalAzul.body.p.y) < 10))
+                this.isFinalAzul = true;
+        }
 
-        if(this.isFinal)
+
+        this.isFinalVerde = false;
+        for(var i=0;i<this.verdes.length;i++){
+            if((Math.abs(this.verdes[i].body.p.x - this.finalVerde.body.p.x) < 10)
+                && (Math.abs(this.verdes[i].body.p.y - this.finalVerde.body.p.y) < 10))
+                this.isFinalVerde = true;
+        }
+
+
+
+        if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde)
             console.log("HAS GAANAAAAADOOOOOOOOOOOO")
 
-        for(var i = 0; i < this.cajas.length; i++) {
-            this.cajas[i].actualizar();
+        for(var i = 0; i < this.marrones.length; i++) {
+            this.marrones[i].actualizar();
         }
+
+        for(var i = 0; i < this.azules.length; i++) {
+            this.azules[i].actualizar();
+        }
+
+        for(var i = 0; i < this.verdes.length; i++) {
+            this.verdes[i].actualizar();
+        }
+
 
         this.space.step(dt);
 
@@ -172,30 +204,82 @@ var GameLayer = cc.Layer.extend({
         var grupoMuros = this.mapa.getObjectGroup("muros");
         var murosArray = grupoMuros.getObjects();
         for (var i = 0; i < murosArray.length; i++) {
-            var muro = new Muro(this,
-                cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50));
-            this.muros.push(muro);
+            var muro = new Barrera(this,
+                cc.p(murosArray[i]["x"]+50,murosArray[i]["y"]-50),"#box_red1.png");
+            this.barreras.push(muro);
         }
 
-        var grupoCajas = this.mapa.getObjectGroup("cajas");
-        var cajasArray = grupoCajas.getObjects();
-        for (var i = 0; i < cajasArray.length; i++) {
+        /*
+        var grupoHoles = this.mapa.getObjectGroup("holes");
+        var holesArray = grupoHoles.getObjects();
+        for (var i = 0; i < holesArray.length; i++) {
+            var muro = new Barrera(this,
+                cc.p(holesArray[i]["x"]+50,holesArray[i]["y"]-50),"#box-hole1.png");
+            this.barreras.push(muro);
+        }
+
+*/
+
+        var grupoMarrones = this.mapa.getObjectGroup("marrones");
+        var marronesArray = grupoMarrones.getObjects();
+        for (var i = 0; i < marronesArray.length; i++) {
             var caja = new Caja(this,
-                cc.p(cajasArray[i]["x"]+50,cajasArray[i]["y"]-50));
-            this.cajas.push(caja);
+                cc.p(marronesArray[i]["x"]+50,marronesArray[i]["y"]-50),"brown");
+            this.marrones.push(caja);
         }
 
-        var grupoPosFinal = this.mapa.getObjectGroup("final");
-        var finalArray = grupoPosFinal.getObjects();
 
-        for (var i = 0; i < finalArray.length; i++) {
+        var grupoAzules = this.mapa.getObjectGroup("azules");
+        var azulesArray = grupoAzules.getObjects();
+        for (var i = 0; i < azulesArray.length; i++) {
+            var caja = new Caja(this,
+                cc.p(azulesArray[i]["x"]+50,azulesArray[i]["y"]-50),"blue");
+            this.azules.push(caja);
+        }
+
+
+          var grupoVerdes = this.mapa.getObjectGroup("verdes");
+          var verdesArray = grupoVerdes.getObjects();
+          for (var i = 0; i < verdesArray.length; i++) {
+              var caja = new Caja(this,
+                  cc.p(verdesArray[i]["x"]+50,verdesArray[i]["y"]-50),"green");
+              this.verdes.push(caja);
+          }
+
+
+
+
+        var grupoPosFinalMarron = this.mapa.getObjectGroup("fmarron");
+        var finalArrayMarron = grupoPosFinalMarron.getObjects();
+
+        for (var i = 0; i < finalArrayMarron.length; i++) {
             var fin = new Fin(this,
-                cc.p(finalArray[i]["x"]+50, finalArray[i]["y"]-50));
-            this.finalCaja = fin;
+                cc.p(finalArrayMarron[i]["x"]+50, finalArrayMarron[i]["y"]-50),"brown");
+            this.finalMarron = fin;
         }
 
 
-      },
+        var grupoPosFinalAzul = this.mapa.getObjectGroup("fazul");
+        var finalArrayAzul = grupoPosFinalAzul.getObjects();
+
+        for (var i = 0; i < finalArrayAzul.length; i++) {
+            var fin = new Fin(this,
+                cc.p(finalArrayAzul[i]["x"]+50, finalArrayAzul[i]["y"]-50),"blue");
+            this.finalAzul = fin;
+        }
+
+
+        var grupoPosFinalVerde = this.mapa.getObjectGroup("fverde");
+        var finalArrayVerde = grupoPosFinalVerde.getObjects();
+
+        for (var i = 0; i < finalArrayVerde.length; i++) {
+            var fin = new Fin(this,
+                cc.p(finalArrayVerde[i]["x"]+50, finalArrayVerde[i]["y"]-50),"green");
+            this.finalVerde = fin;
+        }
+
+
+    },
 
     colisionCajaFinal:function(){
 
