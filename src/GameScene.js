@@ -18,9 +18,10 @@ var GameLayer = cc.Layer.extend({
     mapaAncho: null,
     muros:[],
     cajas:[],
-    finales:[],
+    finalCaja:null,
     formasEliminar:[],
     chocandoMuro:null,
+    isFinal:false,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -61,10 +62,12 @@ var GameLayer = cc.Layer.extend({
             null, this.collisionJugadorConCaja.bind(this), null, null);
 
 
+ */
 
-*/
         this.space.addCollisionHandler(tipoCaja, tipoFinal,
             null, this.colisionCajaFinal.bind(this), null, null, null);
+
+
 
         this.space.addCollisionHandler(tipoJugador, tipoFinal,
             null, this.colisionJugadorFinal.bind(this), null, null, null);
@@ -98,6 +101,19 @@ var GameLayer = cc.Layer.extend({
     },update:function (dt) {
 
         this.jugador.actualizar();
+
+        
+        this.isFinal = false;
+        for(var i=0;i<this.cajas.length;i++){
+            if((Math.abs(this.cajas[i].body.p.x - this.finalCaja.body.p.x) < 10)
+                && (Math.abs(this.cajas[i].body.p.y - this.finalCaja.body.p.y) < 10))
+                this.isFinal = true;
+        }
+
+        console.log(this.isFinal)
+
+        if(this.isFinal)
+            console.log("HAS GAANAAAAADOOOOOOOOOOOO")
 
         for(var i = 0; i < this.cajas.length; i++) {
             this.cajas[i].actualizar();
@@ -172,14 +188,14 @@ var GameLayer = cc.Layer.extend({
         for (var i = 0; i < finalArray.length; i++) {
             var fin = new Fin(this,
                 cc.p(finalArray[i]["x"]+50, finalArray[i]["y"]-50));
-            this.finales.push(fin);
+            this.finalCaja = fin;
         }
 
 
       },
 
-    colisionCajaFinal:function() {
-        console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+    colisionCajaFinal:function(){
+
     },
 
     colisionJugadorFinal:function() {
