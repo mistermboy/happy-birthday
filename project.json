@@ -16,6 +16,8 @@
         "src/Jugador.js",
         "src/Caja.js",
         "src/Barrera.js",
-        "src/Fin.js"
+        "src/Fin.js",
+        "src/GestorAudio.js",
+        "src/MenuScene.js"
     ]
 }

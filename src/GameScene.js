@@ -28,10 +28,13 @@ var GameLayer = cc.Layer.extend({
     isFinalVerde:true,
     rutaMapa:null,
     nivel:1,
+    pausa:null,
+    delay:null,
     ctor:function () {
         this._super();
         var size = cc.winSize;
 
+        reproducirMusica();
 
         cc.spriteFrameCache.addSpriteFrames(res.jugador_abajo_plist);
         cc.spriteFrameCache.addSpriteFrames(res.jugador_arriba_plist);
@@ -59,21 +62,10 @@ var GameLayer = cc.Layer.extend({
         this.space.damping = 0.0001;
 
 
-
-
         // Depuración
        // this.depuracion = new cc.PhysicsDebugNode(this.space);
       //  this.addChild(this.depuracion, 10);
 
-
-
-        /*
-
-        this.space.addCollisionHandler(tipoJugador, tipoCaja,
-            null, this.collisionJugadorConCaja.bind(this), null, null);
-
-
- */
 
         this.space.addCollisionHandler(tipoCaja, tipoFinal,
             null, this.colisionCajaFinal.bind(this), null, null, null);
@@ -91,7 +83,9 @@ var GameLayer = cc.Layer.extend({
             this.rutaMapa = res.mapa1_tmx;
         else if(this.nivel == 2)
             this.rutaMapa = res.mapa2_tmx;
-        
+        else if(this.nivel == 3)
+            this.rutaMapa = res.mapa3_tmx;
+
         this.cargarMapa();
 
 
@@ -111,13 +105,14 @@ var GameLayer = cc.Layer.extend({
 
 
 
+        this.pausa = false;
+        this.delay = 0;
 
         this.isFinalMarron = true;
         this.isFinalAzul = true;
         this.isFinalVerde = true;
 
-        var posicionXJugador = this.jugador.body.p.x - 200;
-        this.setPosition(cc.p( -posicionXJugador,20));
+        this.setPosition(cc.p( 200,20));
 
         this.scheduleUpdate();
 
@@ -127,6 +122,10 @@ var GameLayer = cc.Layer.extend({
     },update:function (dt) {
 
         this.jugador.actualizar();
+
+        if(this.pausa)
+            this.delay++;
+
 
         if (this.finalMarron != null) {
             this.isFinalMarron = false;
@@ -158,8 +157,17 @@ var GameLayer = cc.Layer.extend({
 
 
         if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde){
-            this.ctor();
-            this.nivel++;
+            var size = cc.winSize;
+            if(this.nivel >= 3)
+                this.spriteFondo = cc.Sprite.create(res.win);
+            else
+                this.spriteFondo = cc.Sprite.create(res.ganar);
+
+            this.spriteFondo.setPosition(cc.p(200, size.height / 2));
+            this.spriteFondo.setScale(1);
+            this.addChild(this.spriteFondo, 100);
+            this.pausa = true;
+            pararMusica();
         }
 
 
@@ -314,6 +322,16 @@ var GameLayer = cc.Layer.extend({
     },
 
     procesarKeyPressed(keyCode) {
+
+
+        if(this.pausa && this.delay >= 50){
+                this.nivel++;
+                this.ctor();
+        }
+
+
+
+
         var posicion = teclas.indexOf(keyCode);
         if (posicion == -1) {
             teclas.push(keyCode);

@@ -7,6 +7,10 @@ var res = {
     tiles32_png: "res/tiles32.png",
     mapa1_tmx: "res/mapa1.tmx",
     mapa2_tmx: "res/mapa2.tmx",
+    mapa3_tmx: "res/mapa3.tmx",
+
+    menu: "res/menu.png",
+    ganar: "res/mensaje_ganar.png",
 
     jugador_der_png : "res/jugador_der.png",
     jugador_der_plist : "res/jugador_der.plist",
@@ -48,7 +52,9 @@ var res = {
     box_final_green_plist : "res/box_final_green.plist",
 
     box_hole_png: "res/box-hole.png",
-    box_hole_plist: "res/box-hole.plist"
+    box_hole_plist: "res/box-hole.plist",
+
+    win:"res/win.png"
 
 
 };
