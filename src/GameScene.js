@@ -26,6 +26,8 @@ var GameLayer = cc.Layer.extend({
     isFinalMarron:true,
     isFinalAzul:true,
     isFinalVerde:true,
+    rutaMapa:null,
+    nivel:1,
     ctor:function () {
         this._super();
         var size = cc.winSize;
@@ -83,6 +85,13 @@ var GameLayer = cc.Layer.extend({
 
 
         this.jugador = new Jugador(this, cc.p(50,250));
+
+
+        if(this.nivel == 1)
+            this.rutaMapa = res.mapa1_tmx;
+        else if(this.nivel == 2)
+            this.rutaMapa = res.mapa2_tmx;
+        
         this.cargarMapa();
 
 
@@ -99,7 +108,6 @@ var GameLayer = cc.Layer.extend({
             onKeyPressed: this.procesarKeyPressed.bind(this),
             onKeyReleased: this.procesarKeyReleased.bind(this)
         }, this);
-
 
 
 
@@ -149,8 +157,11 @@ var GameLayer = cc.Layer.extend({
         }
 
 
-        if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde)
-            console.log("HAS GAANAAAAADOOOOOOOOOOOO")
+        if(this.isFinalMarron && this.isFinalAzul && this.isFinalVerde){
+            this.ctor();
+            this.nivel++;
+        }
+
 
 
 
@@ -186,7 +197,7 @@ var GameLayer = cc.Layer.extend({
 
 
     },cargarMapa:function () {
-         this.mapa = new cc.TMXTiledMap(res.mapa1_tmx);
+         this.mapa = new cc.TMXTiledMap(this.rutaMapa);
          // Añadirlo a la Layer
          this.addChild(this.mapa);
          // Ancho del mapa
@@ -222,7 +233,7 @@ var GameLayer = cc.Layer.extend({
             this.barreras.push(muro);
         }
 
-        /*
+
         var grupoHoles = this.mapa.getObjectGroup("holes");
         var holesArray = grupoHoles.getObjects();
         for (var i = 0; i < holesArray.length; i++) {
@@ -231,7 +242,7 @@ var GameLayer = cc.Layer.extend({
             this.barreras.push(muro);
         }
 
-*/
+
 
         var grupoMarrones = this.mapa.getObjectGroup("marrones");
         var marronesArray = grupoMarrones.getObjects();

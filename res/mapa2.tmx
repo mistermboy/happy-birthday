@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="34">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="100" tileheight="100" nextobjectid="35">
  <tileset firstgid="1" name="box-backgrounb" tilewidth="100" tileheight="100" tilecount="1" columns="1">
   <image source="box-backgrounb.png" width="100" height="100"/>
  </tileset>
@@ -17,9 +17,6 @@
   </object>
  </objectgroup>
  <objectgroup name="muros">
-  <object id="29" x="100" y="99">
-   <polyline points="0,0 0,94 100,96 100,2 -1,3"/>
-  </object>
   <object id="31" x="303" y="102">
    <polyline points="0,0 -3,99 96,99 96,0 3,1"/>
   </object>
@@ -46,4 +43,9 @@
  </objectgroup>
  <objectgroup name="fverde"/>
  <objectgroup name="verdes"/>
+ <objectgroup name="holes">
+  <object id="34" x="101" y="101">
+   <polyline points="0,0 0,97 100,98 99,-1 0,0"/>
+  </object>
+ </objectgroup>
 </map>

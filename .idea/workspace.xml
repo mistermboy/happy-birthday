@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/GameScene.js" line="299" />
+    <bookmark url="file://$PROJECT_DIR$/src/GameScene.js" line="310" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="760145c0-6bb8-41f5-a983-fa674d723a36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mapa1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/res/mapa1.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mapa2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/res/mapa2.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameScene.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -53,7 +54,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="6782" />
+          <entry key="js" value="6928" />
           <entry key="json" value="49" />
           <entry key="plist" value="25" />
         </counts>
@@ -61,7 +62,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="49" />
-          <entry key="JavaScript" value="6782" />
+          <entry key="JavaScript" value="6928" />
           <entry key="PLAIN_TEXT" value="25" />
         </counts>
       </usages-collector>
@@ -72,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="188" column="49" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+            <state relative-caret-position="374">
+              <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -277,12 +278,12 @@
       <workItem from="1546186458286" duration="21570000" />
       <workItem from="1546213970809" duration="6132000" />
       <workItem from="1546249335864" duration="15287000" />
-      <workItem from="1546359336565" duration="6560000" />
+      <workItem from="1546359336565" duration="7079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52806000" />
+    <option name="totallyTimeSpent" value="53325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="752" y="0" width="1175" height="1047" extended-state="0" />
@@ -488,8 +489,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="188" column="49" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+        <state relative-caret-position="374">
+          <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
         </state>
       </provider>
     </entry>

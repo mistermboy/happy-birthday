@@ -51,4 +51,5 @@
    <polyline points="0,0 -2,90 98,92 98,-1 0,-1"/>
   </object>
  </objectgroup>
+ <objectgroup name="holes"/>
 </map>
