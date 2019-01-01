@@ -30,12 +30,22 @@ var res = {
     animacion_cuervo_plist: "res/animacion_cuervo.plist",
     animaciontigre_plist : "res/animaciontigre.plist",
     animaciontigre_png: "res/animaciontigre.png",
+
     box_red_png : "res/box_red.png",
     box_red_plist : "res/box_red.plist",
     box_brown_png : "res/box_brown.png",
     box_brown_plist : "res/box_brown.plist",
+    box_blue_png : "res/box_blue.png",
+    box_blue_plist : "res/box_blue.plist",
+    box_green_png : "res/box_green.png",
+    box_green_plist : "res/box_green.plist",
+
     box_final_brown_png : "res/box_final_brown.png",
-    box_final_brown_plist : "res/box_final_brown.plist"
+    box_final_brown_plist : "res/box_final_brown.plist",
+    box_final_blue_png : "res/box_final_blue.png",
+    box_final_blue_plist : "res/box_final_blue.plist",
+    box_final_green_png : "res/box_final_green.png",
+    box_final_green_plist : "res/box_final_green.plist"
 };
 
 var g_resources = [];

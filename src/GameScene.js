@@ -39,7 +39,10 @@ var GameLayer = cc.Layer.extend({
         cc.spriteFrameCache.addSpriteFrames(res.box_red_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_brown_plist);
         cc.spriteFrameCache.addSpriteFrames(res.box_final_brown_plist);
-
+        cc.spriteFrameCache.addSpriteFrames(res.box_green_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_final_green_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_blue_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.box_final_blue_plist);
 
         // Inicializar Space
         this.space = new cp.Space();
@@ -102,7 +105,7 @@ var GameLayer = cc.Layer.extend({
 
         this.jugador.actualizar();
 
-        
+
         this.isFinal = false;
         for(var i=0;i<this.cajas.length;i++){
             if((Math.abs(this.cajas[i].body.p.x - this.finalCaja.body.p.x) < 10)
