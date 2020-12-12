@@ -1,4 +1,9 @@
-main{
+h1{
+    display: grid;
+    justify-content: center;
+}
+
+main > div{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 42vh);
@@ -6,14 +11,14 @@ main{
 
 }
 
-main > article{
+main > div > article{
     display: grid;
     justify-content: center;
     text-align: center;
 }
 
 
-main > article > img{
+main > div > article > img{
     height: 60vh;
     width: 42vh;
 }
