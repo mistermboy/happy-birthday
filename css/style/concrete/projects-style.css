@@ -1,0 +1,38 @@
+main article h2{
+    font-size: 3.5vh;
+}
+
+main article h2 a{
+    text-decoration: none;
+    color: #222;
+}
+
+main article h2 a:hover{
+    text-decoration: none;
+    color: #e57373;
+}
+
+main article h3{
+    font-size: 1.9vh;
+}
+
+main article ul li div{
+    border: 1px solid #222;
+    border-radius: 10px;
+}
+
+.javascript-color{
+    background-color: #eeff41;
+}
+
+.java-color{
+    background-color: #c96f53;
+}
+
+.typescript-color{
+    background-color: #00838f;
+}
+
+.c-color{
+    background-color: #9e9e9e;
+}

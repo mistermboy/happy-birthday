@@ -1,27 +1,53 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Cocos2d-html5 Hello World test</title>
-    <link rel="icon" type="image/GIF" href="res/favicon.ico"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="full-screen" content="yes"/>
-    <meta name="screen-orientation" content="portrait"/>
-    <meta name="x5-fullscreen" content="true"/>
-    <meta name="360-fullscreen" content="true"/>
-    <style>
-        body, canvas, div {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            -khtml-user-select: none;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-    </style>
+
+    <meta charset="UTF-8"/>
+    <meta name="autor" content="Pablo Menéndez Suárez"/>
+    <meta name="description" content="Portfolio"/>
+    <meta name="keywords" content="html5 portfolio"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Layout -->
+    <link rel="stylesheet" type="text/css" href="css/layout/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout/concrete/portfolio-layout.css"/>
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style/style.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/style/concrete/portfolio-style.css" /> 
 </head>
-<body style="padding:0; margin: 0; background: #000;">
-<canvas id="gameCanvas" width="800" height="450"></canvas>
-<script src="frameworks/cocos2d-html5/CCBoot.js"></script>
-<script cocos src="main.js"></script>
+
+<body>
+        <header>
+            <nav>
+                <a class="active" href="index.html">Home</a>
+                <a href="./routes/hobbies.html">Hobbies</a>
+                <a href="./routes/skills.html">Skills</a>
+                <a href="./routes/projects.html">Projects</a>
+            </nav>     
+        </header>
+    
+        <main>
+
+            <article>
+                    <img alt="Foto perfil"  src="./resources/images/perfil.png"/>
+                    <h1><strong>Pablo Menéndez Suárez</strong></h1>
+                    <p>Software Engineer</p>
+                    <p>MSc Student in Web Engineering</p>
+                    <p>Oviedo, Asturias, Spain</p>
+                    <ul>
+                        <li><a href="https://www.github.com/mistermboy" target="_blank"><img  alt="projects"  src="./resources/images/github.png"/>GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/pablo-men%C3%A9ndez-106262a7/" target="_blank"><img  alt="linkedin"  src="./resources/images/linkdin.png"/>Linkedin</a></li>
+                        <li><a href="https://twitter.com/Mistermboy97" target="_blank"><img  alt="twitter"  src="./resources/images/twitter.png"/>Twitter</a></li>
+                        
+                        <li><a href="mailto:pabloyo97@hotmail.com" target="_blank"><img  alt="email"  src="./resources/images/email.png"/>Email</a></li>
+                    </ul>
+            </article>
+
+             
+           
+        </main>
+        
+    
 </body>
 </html>

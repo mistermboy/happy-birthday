@@ -1,0 +1,19 @@
+main{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 42vh);
+    gap: 5vh;
+
+}
+
+main > article{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+
+main > article > img{
+    height: 60vh;
+    width: 42vh;
+}
