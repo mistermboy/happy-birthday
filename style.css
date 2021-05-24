@@ -1,0 +1,299 @@
+body{
+    font-family: 'Courier New', monospace;
+}
+
+.computer{
+    display: block !important;
+}
+
+.mobile{
+    display: none !important;
+}
+
+
+.main{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    min-height:100vh;
+} 
+
+.body{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 10% 70% 10%;
+}
+
+
+.leftEar{
+    position: relative;
+    top:0px;
+    left:0px;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+.rightEar{
+    position: relative;
+    right:400px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+.face{
+    display: grid;
+    grid-template-rows: 10% 40% 20% 20%;
+    background-color: white;
+    border-radius: 100%;
+    border: 10px solid black;
+    z-index: 1000;
+}
+
+.eyebrowContainer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    position: relative;
+    top:150px;
+}
+
+.leftEyebrow{
+    display: none;
+    position: relative;
+    left: 140px;
+    top:53px;
+    z-index: 1000;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    transform: rotate(24deg);
+}
+
+.rightEyebrow{
+    display: none;
+    position: relative;
+    left: -60px;
+    top:23px;
+    z-index: 1000;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    transform: rotate(144deg);
+}
+
+
+.eyesContainer{ 
+    display: grid;
+    grid-template-columns: 50% 50%;
+    position: relative;
+    top:150px;
+}
+
+.leftEye{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:50px;
+    left: 50px;
+    background-color: black;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+}
+
+.leftEyeIris{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+}
+
+.leftEyePupil{
+    position: relative;
+    top:-60px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: black;
+    /*animation: lefPupilAnimation 0.8s infinite linear;*/
+}
+
+
+.rightEye{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:-20px;
+    background-color: black;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+}
+
+.rightEyeIris{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+}
+
+.rightEyePupil{
+    position: relative;
+    top:-50px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+
+
+@keyframes lefPupilAnimation {
+    0%{
+        top: -50px;
+        left: 25px;
+    }
+    50%{
+        top: 50px;
+        left: 25px;
+    }
+    100%{
+        top: -50px;
+        left: 25px;
+    }
+    
+}
+
+
+@keyframes pupils {
+    0%{
+        top: -50px;
+        left: 30px;
+    }
+    25%{
+        top: -60px;
+        left: 0px;
+    }
+    50%{
+        top: -60px;
+        left: -25px;
+    }
+    75%{
+        top: -60px;
+        left: 0px;
+    }
+    100%{
+        top: -50px;
+        left: 30px;
+    }
+}
+
+
+.noseContainer{ 
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:150px;
+}
+
+.nose{
+    position: relative;
+    top:-20px;
+    background-color: black;
+    width: 130px;
+    height: 75px;
+    border-top-left-radius: 110px;
+    border-top-right-radius: 110px;
+    transform: rotate(164deg);
+}
+
+.mouthContainer{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:100px;
+}
+
+.mouth{ 
+    position: relative;
+    top:20px;
+    left: 60px;
+    background-color: transparent;
+    border-top:15px solid black;
+    width: 130px;
+    height: 55px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 10px;
+    transform: rotate(350deg);
+}
+
+
+.cros{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.fire{
+    position: relative;
+    left: -500px;
+    top:-100px;
+    visibility:hidden;
+    font-size: 24px;
+    filter: blur(0.02em);
+    -webkit-filter: blur(0.02em);
+    margin: 3em auto 0 auto;
+    position: relative;
+    width: 10em;
+    height: 12em;
+}
+
+.fireParticle{
+    animation: rise 1s ease-in infinite;
+    background-image: radial-gradient(rgb(255,80,0) 20%, rgba(255,80,0,0) 100%);
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 5em;
+}
+
+
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(1) scale(1);
+    }
+    25% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10em) scale(0);
+    }
+}
+
+
+#type{
+    font-size: 5vh;
+    margin-left: -10vh;
+}
