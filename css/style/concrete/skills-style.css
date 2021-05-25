@@ -1,0 +1,18 @@
+main article h2{
+    font-size: 2.5vh;    
+}
+
+main > article > div {
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+
+
+main > article > div > div{
+    background-color: #e57373;
+    border-radius: 5px 0px 0px 5px;
+}
+
+article div div{
+    text-align: center;
+}

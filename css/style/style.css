@@ -1,0 +1,47 @@
+@font-face {
+    font-family: sansita_swashed;
+    src: url(../../resources/fonts/Sansita_Swashed/static/SansitaSwashed-Light.ttf);
+}
+
+@font-face {
+    font-family: miniver;
+    src: url(../../resources/fonts/Miniver/Miniver-Regular.ttf);
+}
+
+
+@font-face {
+    font-family: indi_flower;
+    src: url(../../resources/fonts/Indie_Flower/IndieFlower-Regular.ttf);
+}
+
+body{
+    font-family: sansita_swashed;
+    margin:0;
+}
+
+main > article{
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+    font-size: 20px;
+}
+
+
+
+
+header nav{
+    background-color: rgb(70, 69, 69) !important;
+}
+
+header > nav > a{
+    color: rgb(224, 216, 216);
+    text-decoration: none;
+    font-size: 4vh;
+}
+
+header > nav > a:hover{
+    color: #e57373;
+}
+
+.active {
+    color: #e57373;
+  }
+

@@ -1,0 +1,38 @@
+main{
+    display: grid;
+    justify-content: center; 
+    grid-template-columns: repeat(auto-fit,45vh);
+    gap: 5vh;
+}
+
+main > article{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+main > article > ul > li > a > img{
+    height: 5vh;
+    width: 5vh;
+}
+
+
+main > article > ul > li {
+   margin:1vh;
+}
+
+
+main > article > ul > li > a {
+    display: grid;
+    gap:0.8vh;
+    grid-template-rows: 50% 50%;
+    text-decoration: none;
+    color:black
+}
+
+main > article > img{
+    height: 50vh;
+    width: 45vh;
+}
+
+

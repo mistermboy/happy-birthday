@@ -1,49 +1,53 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <script src='main.js'></script>
+
+    <meta charset="UTF-8"/>
+    <meta name="autor" content="Pablo Menéndez Suárez"/>
+    <meta name="description" content="Portfolio"/>
+    <meta name="keywords" content="html5 portfolio"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Layout -->
+    <link rel="stylesheet" type="text/css" href="css/layout/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout/concrete/portfolio-layout.css"/>
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style/style.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/style/concrete/portfolio-style.css" /> 
 </head>
+
 <body>
-     <div class="main">
-        <div class="body">
-            <div class="leftEar"></div>
-            <div class="face">
-                <div class="eyebrowContainer">
-                    <div id="leftEyebrow" class="leftEyebrow"></div>
-                    <div id="rightEyebrow" class="rightEyebrow"></div>
-                </div>
-                <div class="eyesContainer"> 
-                    <div class="leftEye">
-                        <div id="leftEyeIris" class="leftEyeIris">
-                            <div id="leftPupil" class="leftEyePupil"></div>    
-                        </div>    
-                    </div>
-                    <div class="rightEye">
-                        <div id="rightEyeIris" class="rightEyeIris">
-                            <div id="rightPupil" class="rightEyePupil"></div>    
-                        </div>    
-                    </div>
-                 
-                </div>
-                <div class="noseContainer">
-                    <div class="nose"></div>
-                </div>
-                <div class="mouthContainer">
-                    <div class="mouth"></div>
-                </div>
-            </div>
-            <div class="rightEar"></div>
-        </div>
+        <header>
+            <nav>
+                <a class="active" href="index.html">Home</a>
+                <a href="./routes/hobbies.html">Hobbies</a>
+                <a href="./routes/skills.html">Skills</a>
+                <a href="./routes/projects.html">Projects</a>
+            </nav>     
+        </header>
+    
+        <main>
 
-        <p id="type"></p>
-    </div>
+            <article>
+                    <img alt="Foto perfil"  src="./resources/images/perfil.png"/>
+                    <h1><strong>Pablo Menéndez Suárez</strong></h1>
+                    <p>Software Engineer</p>
+                    <p>MSc Student in Web Engineering</p>
+                    <p>Oviedo, Asturias, Spain</p>
+                    <ul>
+                        <li><a href="https://www.github.com/mistermboy" target="_blank"><img  alt="projects"  src="./resources/images/github.png"/>GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/pablo-men%C3%A9ndez-106262a7/" target="_blank"><img  alt="linkedin"  src="./resources/images/linkdin.png"/>Linkedin</a></li>
+                        <li><a href="https://twitter.com/Mistermboy97" target="_blank"><img  alt="twitter"  src="./resources/images/twitter.png"/>Twitter</a></li>
+                        
+                        <li><a href="mailto:pabloyo97@hotmail.com" target="_blank"><img  alt="email"  src="./resources/images/email.png"/>Email</a></li>
+                    </ul>
+            </article>
+
+             
+           
+        </main>
+        
+    
 </body>
-
-
-
 </html>
